@@ -22,12 +22,14 @@ namespace StoryGame.Core
         {
             Debug.Log("[Bootstrap] Servisler baþlatýlýyor...");
 
-            // Ýleride buraya servisler eklenecek:
-            // ServiceLocator.Register<ISaveService>(new SaveService());
-            // ServiceLocator.Register<IDiamondService>(new DiamondService());
-            // ServiceLocator.Register<IAudioService>(new AudioService());
+            var saveService = new SaveService();
+            saveService.Load();
+            ServiceLocator.Register<ISaveService>(saveService);
 
-            Debug.Log("[Bootstrap] Servisler hazýr.");
+            var diamondService = new DiamondService(saveService);
+            ServiceLocator.Register<IDiamondService>(diamondService);
+
+            Debug.Log($"[Bootstrap] Servisler hazýr. Mevcut elmas: {diamondService.GetAmount()}");
         }
 
         private void LoadFirstScene()
