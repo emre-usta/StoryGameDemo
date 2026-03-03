@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e95a33175f9e5449a8bb101c1f89af7, type: 3}
+  m_Name: Jenniffer
+  m_EditorClassIdentifier: 
+  characterId: jenniffer
+  characterName: Jenniffer
+  description: "G\xFCzel oldu\u011Fu kadar ate\u015Fli. Para harcamay\u0131 sever,
+    \u0131srara gelemez."
+  portrait: {fileID: 0}
+  outfits: []
+  theme: {fileID: 0}
+  isUnlockedByDefault: 1
+  unlockDiamondCost: 0
+  warmth: 75
+  mystery: 40
+  confidence: 85
+  playfulness: 70
