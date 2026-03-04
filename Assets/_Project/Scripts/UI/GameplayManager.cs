@@ -84,6 +84,7 @@ namespace StoryGame.UI
                 else if (narrationPanel != null && narrationPanel.activeSelf ||
                          dialoguePanel != null && dialoguePanel.activeSelf)
                 {
+                    ServiceLocator.Get<IAudioService>()?.PlaySFX("dialogue_advance");
                     _dialogueEngine.Advance();
                 }
             }
@@ -142,8 +143,8 @@ namespace StoryGame.UI
         private void OnEpisodeEnded(EndingType ending)
         {
             Debug.Log($"[GameplayManager] Bölüm bitti! Ending: {ending}");
+            ServiceLocator.Get<IAudioService>()?.PlaySFX("episode_complete");
             HideAllPanels();
-            // İleride ending sahnesine geçiş buraya eklenecek
         }
 
         private void HideAllPanels()

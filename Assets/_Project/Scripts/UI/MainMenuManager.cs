@@ -34,10 +34,18 @@ namespace StoryGame.UI
         private void SetupButtons()
         {
             if (playButton != null)
-                playButton.onClick.AddListener(OnPlayClicked);
+                playButton.onClick.AddListener(() =>
+                {
+                    ServiceLocator.Get<IAudioService>()?.PlaySFX("button_click");
+                    OnPlayClicked();
+                });
 
             if (settingsButton != null)
-                settingsButton.onClick.AddListener(OnSettingsClicked);
+                settingsButton.onClick.AddListener(() =>
+                {
+                    ServiceLocator.Get<IAudioService>()?.PlaySFX("button_click");
+                    OnSettingsClicked();
+                });
         }
 
         private void OnPlayClicked()

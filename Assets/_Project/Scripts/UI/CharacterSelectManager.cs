@@ -38,13 +38,13 @@ namespace StoryGame.UI
         private void SetupButtons()
         {
             if (nextButton != null)
-                nextButton.onClick.AddListener(OnNextClicked);
+                nextButton.onClick.AddListener(() => { ServiceLocator.Get<IAudioService>()?.PlaySFX("button_click"); OnNextClicked(); });
             if (prevButton != null)
-                prevButton.onClick.AddListener(OnPrevClicked);
+                prevButton.onClick.AddListener(() => { ServiceLocator.Get<IAudioService>()?.PlaySFX("button_click"); OnPrevClicked(); });
             if (playButton != null)
-                playButton.onClick.AddListener(OnPlayClicked);
+                playButton.onClick.AddListener(() => { ServiceLocator.Get<IAudioService>()?.PlaySFX("button_click"); OnPlayClicked(); });
             if (backButton != null)
-                backButton.onClick.AddListener(OnBackClicked);
+                backButton.onClick.AddListener(() => { ServiceLocator.Get<IAudioService>()?.PlaySFX("button_click"); OnBackClicked(); });
         }
 
         private void UpdateUI()
