@@ -144,7 +144,10 @@ namespace StoryGame.UI
         {
             Debug.Log($"[GameplayManager] Bölüm bitti! Ending: {ending}");
             ServiceLocator.Get<IAudioService>()?.PlaySFX("episode_complete");
+            PlayerPrefs.SetString("LastEnding", ending.ToString());
+            PlayerPrefs.SetInt("LastAffection", _characterState.affectionPoints);
             HideAllPanels();
+            SceneTransition.LoadScene("EndingScreen");
         }
 
         private void HideAllPanels()
