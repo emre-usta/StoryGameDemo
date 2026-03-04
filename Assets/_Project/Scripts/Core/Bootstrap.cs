@@ -29,6 +29,12 @@ namespace StoryGame.Core
             var diamondService = new DiamondService(saveService);
             ServiceLocator.Register<IDiamondService>(diamondService);
 
+            var audioService = GetComponentInChildren<AudioService>();
+            if (audioService != null)
+                ServiceLocator.Register<IAudioService>(audioService);
+            else
+                Debug.LogWarning("[Bootstrap] AudioService bulunamadý!");
+
             Debug.Log($"[Bootstrap] Servisler hazýr. Mevcut elmas: {diamondService.GetAmount()}");
         }
 
