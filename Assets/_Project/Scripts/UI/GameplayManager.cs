@@ -23,6 +23,7 @@ namespace StoryGame.UI
 
         [Header("HUD")]
         [SerializeField] private TextMeshProUGUI diamondText;
+        [SerializeField] private AffectionBar affectionBar;
 
         [Header("Diyalog Verisi")]
         [SerializeField] private DialogueData dialogueData;
@@ -35,6 +36,7 @@ namespace StoryGame.UI
         {
             _diamondService = ServiceLocator.Get<IDiamondService>();
             UpdateDiamondUI();
+            UpdateAffectionBar();
 
             // Seçili karakteri al
             string characterId = PlayerPrefs.GetString("SelectedCharacter", "jenniffer");
@@ -62,10 +64,10 @@ namespace StoryGame.UI
 
         private void Update()
         {
-            // Ekrana tıklayınca ilerle
             if (Input.GetMouseButtonDown(0))
             {
-                if (narrationPanel.activeSelf || dialoguePanel.activeSelf)
+                if (narrationPanel != null && narrationPanel.activeSelf ||
+                    dialoguePanel != null && dialoguePanel.activeSelf)
                     _dialogueEngine.Advance();
             }
         }
@@ -75,6 +77,7 @@ namespace StoryGame.UI
             HideAllPanels();
             narrationPanel.SetActive(true);
             narrationText.text = node.text;
+            UpdateAffectionBar();
         }
 
         private void ShowDialogue(DialogueNode node)
@@ -83,6 +86,7 @@ namespace StoryGame.UI
             dialoguePanel.SetActive(true);
             speakerNameText.text = node.speaker;
             dialogueText.text = node.text;
+            UpdateAffectionBar();
         }
 
         private void ShowChoices(DialogueNode node)
@@ -109,6 +113,7 @@ namespace StoryGame.UI
                     choiceButtons[i].gameObject.SetActive(false);
                 }
             }
+            UpdateAffectionBar();
         }
 
         private void OnEpisodeEnded(EndingType ending)
@@ -140,6 +145,12 @@ namespace StoryGame.UI
                 _dialogueEngine.OnChoiceNode -= ShowChoices;
                 _dialogueEngine.OnEpisodeEnded -= OnEpisodeEnded;
             }
+        }
+
+        private void UpdateAffectionBar()
+        {
+            if (affectionBar != null)
+                affectionBar.UpdateBar(_characterState);
         }
     }
 }
