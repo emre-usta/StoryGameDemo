@@ -19,6 +19,9 @@ namespace StoryGame.UI
 
         private void Start()
         {
+            var audio = StoryGame.Core.ServiceLocator.Get<StoryGame.Core.IAudioService>();
+            audio?.PlayMusic("titlescreen");
+
             StartCoroutine(TitleSequence());
         }
 

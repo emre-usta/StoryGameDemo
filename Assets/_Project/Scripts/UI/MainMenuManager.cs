@@ -17,6 +17,9 @@ namespace StoryGame.UI
 
         private void Start()
         {
+            var audio = ServiceLocator.Get<IAudioService>();
+            audio?.PlayMusic("mainmenu");
+
             _diamondService = ServiceLocator.Get<IDiamondService>();
             UpdateDiamondUI();
             SetupButtons();

@@ -39,6 +39,9 @@ namespace StoryGame.UI
 
         private void Start()
         {
+            var audio = ServiceLocator.Get<IAudioService>();
+            audio?.PlayMusic("gameplay");
+
             _diamondService = ServiceLocator.Get<IDiamondService>();
             UpdateDiamondUI();
             UpdateAffectionBar();
