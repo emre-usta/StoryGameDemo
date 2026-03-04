@@ -2036,6 +2036,7 @@ GameObject:
   - component: {fileID: 1803757197}
   - component: {fileID: 1803757196}
   - component: {fileID: 1803757200}
+  - component: {fileID: 1803757201}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2144,6 +2145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   narrationPanel: {fileID: 924693447}
   narrationText: {fileID: 739876083}
+  typewriter: {fileID: 1803757201}
   dialoguePanel: {fileID: 619752268}
   speakerNameText: {fileID: 926359833}
   dialogueText: {fileID: 45299074}
@@ -2155,6 +2157,19 @@ MonoBehaviour:
   diamondText: {fileID: 1379035381}
   affectionBar: {fileID: 116227804}
   dialogueData: {fileID: 11400000, guid: 2bcf14ffc5676184eb72b37682f48b9c, type: 2}
+--- !u!114 &1803757201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803757195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8319c6e8f4276f443b1015540b568c89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charactersPerSecond: 30
 --- !u!1 &1805830369
 GameObject:
   m_ObjectHideFlags: 0

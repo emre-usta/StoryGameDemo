@@ -13,6 +13,7 @@ namespace StoryGame.UI
         [Header("Diyalog UI")]
         [SerializeField] private GameObject narrationPanel;
         [SerializeField] private TextMeshProUGUI narrationText;
+        [SerializeField] private TypewriterEffect typewriter;
 
         [SerializeField] private GameObject dialoguePanel;
         [SerializeField] private TextMeshProUGUI speakerNameText;
@@ -31,6 +32,7 @@ namespace StoryGame.UI
         private DialogueEngine _dialogueEngine;
         private CharacterState _characterState;
         private IDiamondService _diamondService;
+        private string _currentNodeText;
 
         private void Start()
         {
@@ -66,9 +68,18 @@ namespace StoryGame.UI
         {
             if (Input.GetMouseButtonDown(0))
             {
-                if (narrationPanel != null && narrationPanel.activeSelf ||
-                    dialoguePanel != null && dialoguePanel.activeSelf)
+                if (typewriter != null && typewriter.IsTyping)
+                {
+                    if (narrationPanel.activeSelf)
+                        typewriter.Skip(narrationText, _currentNodeText);
+                    else if (dialoguePanel.activeSelf)
+                        typewriter.Skip(dialogueText, _currentNodeText);
+                }
+                else if (narrationPanel != null && narrationPanel.activeSelf ||
+                         dialoguePanel != null && dialoguePanel.activeSelf)
+                {
                     _dialogueEngine.Advance();
+                }
             }
         }
 
@@ -76,7 +87,8 @@ namespace StoryGame.UI
         {
             HideAllPanels();
             narrationPanel.SetActive(true);
-            narrationText.text = node.text;
+            _currentNodeText = node.text;
+            typewriter.Play(narrationText, node.text);
             UpdateAffectionBar();
         }
 
@@ -85,7 +97,8 @@ namespace StoryGame.UI
             HideAllPanels();
             dialoguePanel.SetActive(true);
             speakerNameText.text = node.speaker;
-            dialogueText.text = node.text;
+            _currentNodeText = node.text;
+            typewriter.Play(dialogueText, node.text);
             UpdateAffectionBar();
         }
 
