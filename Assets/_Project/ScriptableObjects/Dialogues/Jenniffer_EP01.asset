@@ -20,14 +20,14 @@ MonoBehaviour:
     type: 0
     speaker: 
     text: "Jennifer ile sahilde y\xFCr\xFCyorsunuz. Hava g\xFCzel, deniz sakin."
-    backgroundId: 
+    backgroundId: sahil
     nextNodeId: node_002
     choices: []
   - id: node_002
     type: 1
     speaker: Jenniffer
     text: "Ge\xE7 kald\u0131n. Ama seni affedece\u011Fim bu sefer."
-    backgroundId: 
+    backgroundId: sehir
     nextNodeId: node_003
     choices: []
   - id: node_003

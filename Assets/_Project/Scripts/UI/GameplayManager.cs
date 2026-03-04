@@ -22,6 +22,9 @@ namespace StoryGame.UI
         [SerializeField] private GameObject choicePanel;
         [SerializeField] private Button[] choiceButtons;
 
+        [Header("Servisler")]
+        [SerializeField] private BackgroundService backgroundService;
+
         [Header("HUD")]
         [SerializeField] private TextMeshProUGUI diamondText;
         [SerializeField] private AffectionBar affectionBar;
@@ -90,6 +93,8 @@ namespace StoryGame.UI
             _currentNodeText = node.text;
             typewriter.Play(narrationText, node.text);
             UpdateAffectionBar();
+            if (!string.IsNullOrEmpty(node.backgroundId))
+                backgroundService?.ChangeBackground(node.backgroundId);
         }
 
         private void ShowDialogue(DialogueNode node)
@@ -100,6 +105,8 @@ namespace StoryGame.UI
             _currentNodeText = node.text;
             typewriter.Play(dialogueText, node.text);
             UpdateAffectionBar();
+            if (!string.IsNullOrEmpty(node.backgroundId))
+                backgroundService?.ChangeBackground(node.backgroundId);
         }
 
         private void ShowChoices(DialogueNode node)
