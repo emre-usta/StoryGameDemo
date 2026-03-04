@@ -57,6 +57,8 @@ namespace StoryGame.UI
         private void OnSettingsClicked()
         {
             Debug.Log("[MainMenuManager] Ayarlar açýlýyor...");
+            ServiceLocator.Get<IAudioService>()?.PlaySFX("button_click");
+            SceneTransition.LoadScene("Settings");
         }
 
         private void OnDestroy()

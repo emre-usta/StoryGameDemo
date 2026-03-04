@@ -103,6 +103,7 @@ namespace StoryGame.UI
             {
                 if (_diamondService.TrySpend(character.unlockDiamondCost))
                 {
+                    ServiceLocator.Get<IAudioService>()?.PlaySFX("diamond_spend");
                     _saveService.UnlockCharacter(character.characterId);
                     Debug.Log($"[CharacterSelect] {character.characterName} açıldı!");
                     UpdateUI();
