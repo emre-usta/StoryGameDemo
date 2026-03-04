@@ -40,7 +40,7 @@ namespace StoryGame.UI
         private void OnPlayClicked()
         {
             Debug.Log("[MainMenuManager] Karakter seçim ekranýna geçiliyor...");
-            SceneManager.LoadScene("CharacterSelect");
+            SceneTransition.LoadScene("CharacterSelect");
         }
 
         private void OnSettingsClicked()

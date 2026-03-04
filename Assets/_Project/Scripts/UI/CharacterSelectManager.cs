@@ -112,12 +112,12 @@ namespace StoryGame.UI
 
             Debug.Log($"[CharacterSelect] {character.characterName} seçildi, oyun başlıyor...");
             PlayerPrefs.SetString("SelectedCharacter", character.characterId);
-            SceneManager.LoadScene("Gameplay");
+            SceneTransition.LoadScene("Gameplay");
         }
 
         private void OnBackClicked()
         {
-            SceneManager.LoadScene("MainMenu");
+            SceneTransition.LoadScene("MainMenu");
         }
 
         private void OnDestroy()
