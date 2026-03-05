@@ -5,6 +5,7 @@ using StoryGame.Core;
 using StoryGame.Characters;
 using StoryGame.Dialogue;
 using TMPro;
+using DG.Tweening;
 
 namespace StoryGame.UI
 {
@@ -99,6 +100,9 @@ namespace StoryGame.UI
         {
             HideAllPanels();
             narrationPanel.SetActive(true);
+            float originalYN = narrationPanel.transform.localPosition.y;
+            narrationPanel.transform.localPosition = new Vector3(0, originalYN - 100f, 0);
+            narrationPanel.transform.DOLocalMoveY(originalYN, 0.6f).SetEase(Ease.OutCubic);
             _currentNodeText = node.text;
             typewriter.Play(narrationText, node.text);
             UpdateAffectionBar();
@@ -110,6 +114,9 @@ namespace StoryGame.UI
         {
             HideAllPanels();
             dialoguePanel.SetActive(true);
+            float originalYD = dialoguePanel.transform.localPosition.y;
+            dialoguePanel.transform.localPosition = new Vector3(0, originalYD - 100f, 0);
+            dialoguePanel.transform.DOLocalMoveY(originalYD, 0.6f).SetEase(Ease.OutCubic);
             speakerNameText.text = node.speaker;
             _currentNodeText = node.text;
             typewriter.Play(dialogueText, node.text);
@@ -136,7 +143,7 @@ namespace StoryGame.UI
                     {
                         if (buttonText != null)
                         {
-                            buttonText.text = $" {choice.text} ({choice.diamondCost})";
+                            buttonText.text = $"{choice.text} ({choice.diamondCost})";
                             buttonText.color = diamondTextColor;
                         }
                         if (buttonImage != null)
@@ -159,6 +166,13 @@ namespace StoryGame.UI
                         _dialogueEngine.SelectChoice(index);
                         UpdateDiamondUI();
                     });
+
+                    // Staggered fade in
+                    var canvasGroup = choiceButtons[i].GetComponent<CanvasGroup>();
+                    if (canvasGroup == null)
+                        canvasGroup = choiceButtons[i].gameObject.AddComponent<CanvasGroup>();
+                    canvasGroup.alpha = 0f;
+                    canvasGroup.DOFade(1f, 0.2f).SetDelay(i * 0.1f);
                 }
                 else
                 {
@@ -188,7 +202,12 @@ namespace StoryGame.UI
         private void UpdateDiamondUI()
         {
             if (diamondText != null)
-                diamondText.text = _diamondService.GetAmount().ToString();
+            {
+                int targetAmount = (int)_diamondService.GetAmount();
+                diamondText.transform.DOKill();
+                diamondText.transform.DOPunchScale(Vector3.one * 0.3f, 0.3f, 5, 0.5f);
+                diamondText.text = $"{targetAmount}";
+            }
         }
 
         private void OnDestroy()
