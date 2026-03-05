@@ -35,6 +35,9 @@ namespace StoryGame.Core
             else
                 Debug.LogWarning("[Bootstrap] AudioService bulunamadý!");
 
+            var dailyRewardService = new DailyRewardService(saveService, diamondService);
+            ServiceLocator.Register<DailyRewardService>(dailyRewardService);
+
             Debug.Log($"[Bootstrap] Servisler hazýr. Mevcut elmas: {diamondService.GetAmount()}");
             //saveService.ResetAll();
         }
