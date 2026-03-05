@@ -36,6 +36,7 @@ namespace StoryGame.Core
                 Debug.LogWarning("[Bootstrap] AudioService bulunamadý!");
 
             Debug.Log($"[Bootstrap] Servisler hazýr. Mevcut elmas: {diamondService.GetAmount()}");
+            //saveService.ResetAll();
         }
 
         private void LoadFirstScene()

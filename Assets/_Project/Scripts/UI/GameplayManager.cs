@@ -22,6 +22,11 @@ namespace StoryGame.UI
         [SerializeField] private GameObject choicePanel;
         [SerializeField] private Button[] choiceButtons;
 
+        [SerializeField] private Color normalButtonColor = new Color(0.1f, 0.1f, 0.1f, 0.8f);
+        [SerializeField] private Color diamondButtonColor = new Color(0.6f, 0.4f, 0.0f, 0.9f);
+        [SerializeField] private Color diamondTextColor = new Color(1f, 0.85f, 0.2f, 1f);
+        [SerializeField] private Color normalTextColor = Color.white;
+
         [Header("Servisler")]
         [SerializeField] private BackgroundService backgroundService;
 
@@ -125,12 +130,35 @@ namespace StoryGame.UI
                     choiceButtons[i].gameObject.SetActive(true);
                     var choice = node.choices[i];
                     var buttonText = choiceButtons[i].GetComponentInChildren<TextMeshProUGUI>();
-                    if (buttonText != null)
-                        buttonText.text = choice.isDiamond ? $"💎 {choice.text} ({choice.diamondCost})" : choice.text;
+                    var buttonImage = choiceButtons[i].GetComponent<Image>();
+
+                    if (choice.isDiamond)
+                    {
+                        if (buttonText != null)
+                        {
+                            buttonText.text = $" {choice.text} ({choice.diamondCost})";
+                            buttonText.color = diamondTextColor;
+                        }
+                        if (buttonImage != null)
+                            buttonImage.color = diamondButtonColor;
+                    }
+                    else
+                    {
+                        if (buttonText != null)
+                        {
+                            buttonText.text = choice.text;
+                            buttonText.color = normalTextColor;
+                        }
+                        if (buttonImage != null)
+                            buttonImage.color = normalButtonColor;
+                    }
 
                     int index = i;
                     choiceButtons[i].onClick.RemoveAllListeners();
-                    choiceButtons[i].onClick.AddListener(() => _dialogueEngine.SelectChoice(index));
+                    choiceButtons[i].onClick.AddListener(() => {
+                        _dialogueEngine.SelectChoice(index);
+                        UpdateDiamondUI();
+                    });
                 }
                 else
                 {
