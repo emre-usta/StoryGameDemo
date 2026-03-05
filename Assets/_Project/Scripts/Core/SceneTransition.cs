@@ -34,6 +34,7 @@ namespace StoryGame.Core
         private IEnumerator FadeAndLoad(string sceneName)
         {
             yield return StartCoroutine(Fade(1f));
+            Resources.UnloadUnusedAssets();
             SceneManager.LoadScene(sceneName);
             yield return StartCoroutine(Fade(0f));
         }
