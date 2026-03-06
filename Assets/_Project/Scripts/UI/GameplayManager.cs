@@ -1,11 +1,11 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using StoryGame.Core;
+﻿using DG.Tweening;
 using StoryGame.Characters;
+using StoryGame.Core;
 using StoryGame.Dialogue;
+using System.Collections.Generic;
 using TMPro;
-using DG.Tweening;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace StoryGame.UI
 {
@@ -53,6 +53,7 @@ namespace StoryGame.UI
         private CharacterState _characterState;
         private IDiamondService _diamondService;
         private string _currentNodeText;
+        private string _currentBackgroundId = "";
 
         private void Start()
         {
@@ -62,7 +63,6 @@ namespace StoryGame.UI
             UpdateDiamondUI();
             UpdateAffectionBar();
 
-            // Pause menü
             if (menuButton != null)
                 menuButton.onClick.AddListener(OpenPauseMenu);
             if (resumeButton != null)
@@ -70,34 +70,63 @@ namespace StoryGame.UI
             if (settingsButton != null)
                 settingsButton.onClick.AddListener(() => {
                     ServiceLocator.Get<IAudioService>()?.PlaySFX("button_click");
+                    Time.timeScale = 1f;
+                    pauseMenuPanel.SetActive(false);
+                    PlayerPrefs.SetString("PreviousScene", "Gameplay");
                     SceneTransition.LoadScene("Settings");
                 });
             if (mainMenuButton != null)
                 mainMenuButton.onClick.AddListener(() => {
                     ServiceLocator.Get<IAudioService>()?.PlaySFX("button_click");
-                    ClosePauseMenu();
+                    Time.timeScale = 1f;
+                    pauseMenuPanel.SetActive(false);
                     SceneTransition.LoadScene("MainMenu");
                 });
 
-            // Oyuncu görselini yükle
             int charIndex = PlayerPrefs.GetInt("PlayerCharIndex", 0);
             if (playerCharacterImage != null && playerSprites.Length > charIndex)
                 playerCharacterImage.sprite = playerSprites[charIndex];
 
-            // Seçili karakteri al
             string characterId = PlayerPrefs.GetString("SelectedCharacter", "jenniffer");
-            // CharacterState oluştur
+
             _characterState = new CharacterState();
             _characterState.characterId = characterId;
-            // DialogueEngine kur
+
             _dialogueEngine = gameObject.AddComponent<DialogueEngine>();
             _dialogueEngine.OnNarrationNode += ShowNarration;
             _dialogueEngine.OnDialogueNode += ShowDialogue;
             _dialogueEngine.OnChoiceNode += ShowChoices;
             _dialogueEngine.OnEpisodeEnded += OnEpisodeEnded;
-            // Panelleri kapat
+
             HideAllPanels();
-            // Diyalogu başlat
+
+            bool continueGame = PlayerPrefs.GetString("ContinueGame", "false") == "true";
+            var saveService = ServiceLocator.Get<ISaveService>();
+
+            if (continueGame && saveService != null)
+            {
+                string savedNodeId = saveService.GetSavedNodeId(characterId);
+                if (!string.IsNullOrEmpty(savedNodeId))
+                {
+                    var progress = saveService.LoadProgress(characterId);
+                    _characterState.affectionPoints = progress.affection;
+                    foreach (var flag in progress.flags)
+                        _characterState.SetFlag(flag, 0);
+
+                    // Arka planı yükle
+                    string savedBackgroundId = saveService.GetSavedBackgroundId(characterId);
+                    if (!string.IsNullOrEmpty(savedBackgroundId))
+                    {
+                        _currentBackgroundId = savedBackgroundId;
+                        backgroundService?.ChangeBackground(savedBackgroundId);
+                    }
+
+                    _dialogueEngine.StartEpisodeFromNode(dialogueData, _characterState, savedNodeId);
+                    Debug.Log($"[GameplayManager] Kaldığı yerden devam: {savedNodeId}");
+                    return;
+                }
+            }
+
             if (dialogueData != null)
                 _dialogueEngine.StartEpisode(dialogueData, _characterState);
             else
@@ -132,6 +161,25 @@ namespace StoryGame.UI
             return text.Replace("{playerName}", playerName);
         }
 
+        private void SaveCurrentProgress(string nodeId)
+        {
+            var saveService = ServiceLocator.Get<ISaveService>();
+            if (saveService != null)
+            {
+                var flags = new List<string>();
+                if (_characterState.trustEstablished) flags.Add("trustEstablished");
+                if (_characterState.secretDiscovered) flags.Add("secretDiscovered");
+                if (_characterState.recklessPath) flags.Add("recklessPath");
+                saveService.SaveProgress(
+                    _characterState.characterId,
+                    nodeId,
+                    _characterState.affectionPoints,
+                    flags,
+                    _currentBackgroundId
+                );
+            }
+        }
+
         private void ShowNarration(DialogueNode node)
         {
             HideAllPanels();
@@ -143,9 +191,13 @@ namespace StoryGame.UI
             typewriter.Play(narrationText, _currentNodeText);
             UpdateAffectionBar();
             if (!string.IsNullOrEmpty(node.backgroundId))
+            {
+                _currentBackgroundId = node.backgroundId;
                 backgroundService?.ChangeBackground(node.backgroundId);
+            }
             if (playerCharacterImage != null)
                 playerCharacterImage.gameObject.SetActive(false);
+            SaveCurrentProgress(node.id);
         }
 
         private void ShowDialogue(DialogueNode node)
@@ -160,11 +212,15 @@ namespace StoryGame.UI
             typewriter.Play(dialogueText, _currentNodeText);
             UpdateAffectionBar();
             if (!string.IsNullOrEmpty(node.backgroundId))
+            {
+                _currentBackgroundId = node.backgroundId;
                 backgroundService?.ChangeBackground(node.backgroundId);
+            }
             bool isPlayerSpeaking = node.speaker == "Player" ||
                                      node.speaker == PlayerPrefs.GetString("PlayerName", "Alex");
             if (playerCharacterImage != null)
                 playerCharacterImage.gameObject.SetActive(isPlayerSpeaking);
+            SaveCurrentProgress(node.id);
         }
 
         private void ShowChoices(DialogueNode node)
@@ -173,6 +229,7 @@ namespace StoryGame.UI
             choicePanel.SetActive(true);
             if (playerCharacterImage != null)
                 playerCharacterImage.gameObject.SetActive(true);
+            SaveCurrentProgress(node.id);
             for (int i = 0; i < choiceButtons.Length; i++)
             {
                 if (i < node.choices.Count)
@@ -252,6 +309,7 @@ namespace StoryGame.UI
 
         private void OnDestroy()
         {
+            DOTween.KillAll();
             if (_dialogueEngine != null)
             {
                 _dialogueEngine.OnNarrationNode -= ShowNarration;

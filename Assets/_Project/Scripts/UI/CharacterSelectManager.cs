@@ -1,9 +1,9 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using StoryGame.Core;
+﻿using DG.Tweening;
 using StoryGame.Characters;
+using StoryGame.Core;
 using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace StoryGame.UI
 {
@@ -26,6 +26,11 @@ namespace StoryGame.UI
         [SerializeField] private Image profileButtonImage;
         [SerializeField] private Sprite[] playerSprites;
 
+        [Header("Continue Popup")]
+        [SerializeField] private GameObject continuePopup;
+        [SerializeField] private Button continueButton;
+        [SerializeField] private Button newGameButton;
+
         private int _currentIndex = 0;
         private IDiamondService _diamondService;
         private ISaveService _saveService;
@@ -44,6 +49,11 @@ namespace StoryGame.UI
 
             _diamondService = ServiceLocator.Get<IDiamondService>();
             _saveService = ServiceLocator.Get<ISaveService>();
+
+            if (continueButton != null)
+                continueButton.onClick.AddListener(OnContinueClicked);
+            if (newGameButton != null)
+                newGameButton.onClick.AddListener(OnNewGameClicked);
 
             SetupButtons();
             UpdateUI();
@@ -79,7 +89,6 @@ namespace StoryGame.UI
             if (diamondText != null)
                 diamondText.text = _diamondService.GetAmount().ToString();
 
-            // Kilit kontrolü
             bool isUnlocked = character.isUnlockedByDefault ||
                               _saveService.IsCharacterUnlocked(character.characterId);
 
@@ -125,8 +134,50 @@ namespace StoryGame.UI
                 return;
             }
 
-            Debug.Log($"[CharacterSelect] {character.characterName} seçildi, oyun başlıyor...");
+            // Kayıt var mı kontrol et
+            string savedNodeId = _saveService.GetSavedNodeId(character.characterId);
+            if (!string.IsNullOrEmpty(savedNodeId))
+            {
+                // Popup göster
+                ShowContinuePopup();
+            }
+            else
+            {
+                StartNewGame(character.characterId);
+            }
+        }
+
+        private void ShowContinuePopup()
+        {
+            if (continuePopup == null) return;
+            continuePopup.SetActive(true);
+            continuePopup.transform.localScale = Vector3.zero;
+            continuePopup.transform.DOScale(1f, 0.3f).SetEase(DG.Tweening.Ease.OutBack);
+        }
+
+        private void OnContinueClicked()
+        {
+            ServiceLocator.Get<IAudioService>()?.PlaySFX("button_click");
+            var character = characters[_currentIndex];
             PlayerPrefs.SetString("SelectedCharacter", character.characterId);
+            PlayerPrefs.SetString("ContinueGame", "true");
+            continuePopup.SetActive(false);
+            SceneTransition.LoadScene("Gameplay");
+        }
+
+        private void OnNewGameClicked()
+        {
+            ServiceLocator.Get<IAudioService>()?.PlaySFX("button_click");
+            var character = characters[_currentIndex];
+            _saveService.DeleteProgress(character.characterId);
+            continuePopup.SetActive(false);
+            StartNewGame(character.characterId);
+        }
+
+        private void StartNewGame(string characterId)
+        {
+            PlayerPrefs.SetString("SelectedCharacter", characterId);
+            PlayerPrefs.SetString("ContinueGame", "false");
             SceneTransition.LoadScene("Gameplay");
         }
 

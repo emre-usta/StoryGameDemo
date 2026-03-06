@@ -73,8 +73,13 @@ namespace StoryGame.UI
 
         private void OnBackClicked()
         {
-            _audioService?.PlaySFX("button_click");
-            SceneTransition.LoadScene("MainMenu");
+            ServiceLocator.Get<IAudioService>()?.PlaySFX("button_click");
+            string previousScene = PlayerPrefs.GetString("PreviousScene", "MainMenu");
+            if (previousScene == "Gameplay")
+            {
+                PlayerPrefs.SetString("ContinueGame", "true");
+            }
+            SceneTransition.LoadScene(previousScene);
         }
     }
 }

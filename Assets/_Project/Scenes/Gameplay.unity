@@ -3312,12 +3312,12 @@ RectTransform:
   - {fileID: 1256666116}
   - {fileID: 276951128}
   - {fileID: 1379035380}
+  - {fileID: 903215629}
   - {fileID: 924693448}
   - {fileID: 619752269}
   - {fileID: 439503458}
   - {fileID: 116227803}
   - {fileID: 1550285931}
-  - {fileID: 903215629}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

@@ -57,11 +57,11 @@ namespace StoryGame.UI
                     ServiceLocator.Get<IAudioService>()?.PlaySFX("button_click");
                     OnPlayClicked();
                 });
-
             if (settingsButton != null)
                 settingsButton.onClick.AddListener(() =>
                 {
                     ServiceLocator.Get<IAudioService>()?.PlaySFX("button_click");
+                    PlayerPrefs.SetString("PreviousScene", "MainMenu");
                     OnSettingsClicked();
                 });
         }

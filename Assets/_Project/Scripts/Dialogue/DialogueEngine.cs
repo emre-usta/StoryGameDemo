@@ -109,5 +109,18 @@ namespace StoryGame.Dialogue
 
             OnEpisodeEnded?.Invoke(ending);
         }
+
+        public void StartEpisodeFromNode(DialogueData data, CharacterState characterState, string nodeId)
+        {
+            _currentData = data;
+            _characterState = characterState;
+            _currentEpisodeIndex = data.episodeIndex;
+            Debug.Log($"[DialogueEngine] Kaldýðý yerden devam: {nodeId}");
+            var node = data.GetNode(nodeId);
+            if (node != null)
+                PlayNode(node);
+            else
+                StartEpisode(data, characterState);
+        }
     }
 }
