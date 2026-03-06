@@ -23,7 +23,7 @@ namespace StoryGame.Core
             if (string.IsNullOrEmpty(lastRewardStr)) return true;
 
             if (DateTime.TryParse(lastRewardStr, out DateTime lastReward))
-                return (DateTime.Now - lastReward).TotalHours >= 0;
+                return (DateTime.Now - lastReward).TotalHours >= 24;
 
             return true;
         }

@@ -25,14 +25,14 @@ MonoBehaviour:
     choices: []
   - id: node_002
     type: 1
-    speaker: Jenniffer
-    text: "Ge\xE7 kald\u0131n. Ama seni affedece\u011Fim bu sefer."
+    speaker: Jennifer
+    text: "Ge\xE7 kald\u0131n {playerName}. Ama seni affedece\u011Fim bu sefer."
     backgroundId: sehir
     nextNodeId: node_003
     choices: []
   - id: node_003
     type: 2
-    speaker: 
+    speaker: Player
     text: 
     backgroundId: 
     nextNodeId: 
@@ -47,14 +47,14 @@ MonoBehaviour:
     - text: "Beklemek sana yak\u0131\u015F\u0131yor."
       nextNodeId: node_004
       effect:
-        affection: 80
+        affection: 8
         setFlag: 
       isDiamond: 0
       diamondCost: 0
   - id: node_004
     type: 1
     speaker: Jenniffer
-    text: "Haha! Sen hi\xE7 de\u011Fi\u015Fmiyorsun."
+    text: "Haha! Sen hi\xE7 de\u011Fi\u015Fmiyorsun. {playerName}"
     backgroundId: 
     nextNodeId: node_005
     choices: []

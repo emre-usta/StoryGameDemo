@@ -22,12 +22,26 @@ namespace StoryGame.UI
         [SerializeField] private Button playButton;
         [SerializeField] private Button backButton;
 
+        [SerializeField] private Button profileButton;
+        [SerializeField] private Image profileButtonImage;
+        [SerializeField] private Sprite[] playerSprites;
+
         private int _currentIndex = 0;
         private IDiamondService _diamondService;
         private ISaveService _saveService;
 
         private void Start()
         {
+            int charIndex = PlayerPrefs.GetInt("PlayerCharIndex", 0);
+            if (profileButtonImage != null && playerSprites.Length > charIndex)
+                profileButtonImage.sprite = playerSprites[charIndex];
+
+            if (profileButton != null)
+                profileButton.onClick.AddListener(() => {
+                    ServiceLocator.Get<IAudioService>()?.PlaySFX("button_click");
+                    SceneTransition.LoadScene("PlayerSetup");
+                });
+
             _diamondService = ServiceLocator.Get<IDiamondService>();
             _saveService = ServiceLocator.Get<ISaveService>();
 

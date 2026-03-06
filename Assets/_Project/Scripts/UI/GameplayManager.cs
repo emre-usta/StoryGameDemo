@@ -38,6 +38,10 @@ namespace StoryGame.UI
         [Header("Diyalog Verisi")]
         [SerializeField] private DialogueData dialogueData;
 
+        [Header("Oyuncu")]
+        [SerializeField] private Image playerCharacterImage;
+        [SerializeField] private Sprite[] playerSprites;
+
         private DialogueEngine _dialogueEngine;
         private CharacterState _characterState;
         private IDiamondService _diamondService;
@@ -47,28 +51,28 @@ namespace StoryGame.UI
         {
             var audio = ServiceLocator.Get<IAudioService>();
             audio?.PlayMusic("gameplay");
-
             _diamondService = ServiceLocator.Get<IDiamondService>();
             UpdateDiamondUI();
             UpdateAffectionBar();
 
+            // Oyuncu görselini yükle
+            int charIndex = PlayerPrefs.GetInt("PlayerCharIndex", 0);
+            if (playerCharacterImage != null && playerSprites.Length > charIndex)
+                playerCharacterImage.sprite = playerSprites[charIndex];
+
             // Seçili karakteri al
             string characterId = PlayerPrefs.GetString("SelectedCharacter", "jenniffer");
-
             // CharacterState oluştur
             _characterState = new CharacterState();
             _characterState.characterId = characterId;
-
             // DialogueEngine kur
             _dialogueEngine = gameObject.AddComponent<DialogueEngine>();
             _dialogueEngine.OnNarrationNode += ShowNarration;
             _dialogueEngine.OnDialogueNode += ShowDialogue;
             _dialogueEngine.OnChoiceNode += ShowChoices;
             _dialogueEngine.OnEpisodeEnded += OnEpisodeEnded;
-
             // Panelleri kapat
             HideAllPanels();
-
             // Diyalogu başlat
             if (dialogueData != null)
                 _dialogueEngine.StartEpisode(dialogueData, _characterState);
@@ -96,6 +100,12 @@ namespace StoryGame.UI
             }
         }
 
+        private string ProcessText(string text)
+        {
+            string playerName = PlayerPrefs.GetString("PlayerName", "Alex");
+            return text.Replace("{playerName}", playerName);
+        }
+
         private void ShowNarration(DialogueNode node)
         {
             HideAllPanels();
@@ -103,11 +113,13 @@ namespace StoryGame.UI
             float originalYN = narrationPanel.transform.localPosition.y;
             narrationPanel.transform.localPosition = new Vector3(0, originalYN - 100f, 0);
             narrationPanel.transform.DOLocalMoveY(originalYN, 0.6f).SetEase(Ease.OutCubic);
-            _currentNodeText = node.text;
-            typewriter.Play(narrationText, node.text);
+            _currentNodeText = ProcessText(node.text);
+            typewriter.Play(narrationText, _currentNodeText);
             UpdateAffectionBar();
             if (!string.IsNullOrEmpty(node.backgroundId))
                 backgroundService?.ChangeBackground(node.backgroundId);
+            if (playerCharacterImage != null)
+                playerCharacterImage.gameObject.SetActive(false);
         }
 
         private void ShowDialogue(DialogueNode node)
@@ -118,18 +130,23 @@ namespace StoryGame.UI
             dialoguePanel.transform.localPosition = new Vector3(0, originalYD - 100f, 0);
             dialoguePanel.transform.DOLocalMoveY(originalYD, 0.6f).SetEase(Ease.OutCubic);
             speakerNameText.text = node.speaker;
-            _currentNodeText = node.text;
-            typewriter.Play(dialogueText, node.text);
+            _currentNodeText = ProcessText(node.text);
+            typewriter.Play(dialogueText, _currentNodeText);
             UpdateAffectionBar();
             if (!string.IsNullOrEmpty(node.backgroundId))
                 backgroundService?.ChangeBackground(node.backgroundId);
+            bool isPlayerSpeaking = node.speaker == "Player" ||
+                                     node.speaker == PlayerPrefs.GetString("PlayerName", "Alex");
+            if (playerCharacterImage != null)
+                playerCharacterImage.gameObject.SetActive(isPlayerSpeaking);
         }
 
         private void ShowChoices(DialogueNode node)
         {
             HideAllPanels();
             choicePanel.SetActive(true);
-
+            if (playerCharacterImage != null)
+                playerCharacterImage.gameObject.SetActive(true);
             for (int i = 0; i < choiceButtons.Length; i++)
             {
                 if (i < node.choices.Count)
@@ -138,7 +155,6 @@ namespace StoryGame.UI
                     var choice = node.choices[i];
                     var buttonText = choiceButtons[i].GetComponentInChildren<TextMeshProUGUI>();
                     var buttonImage = choiceButtons[i].GetComponent<Image>();
-
                     if (choice.isDiamond)
                     {
                         if (buttonText != null)
@@ -159,15 +175,12 @@ namespace StoryGame.UI
                         if (buttonImage != null)
                             buttonImage.color = normalButtonColor;
                     }
-
                     int index = i;
                     choiceButtons[i].onClick.RemoveAllListeners();
                     choiceButtons[i].onClick.AddListener(() => {
                         _dialogueEngine.SelectChoice(index);
                         UpdateDiamondUI();
                     });
-
-                    // Staggered fade in
                     var canvasGroup = choiceButtons[i].GetComponent<CanvasGroup>();
                     if (canvasGroup == null)
                         canvasGroup = choiceButtons[i].gameObject.AddComponent<CanvasGroup>();
