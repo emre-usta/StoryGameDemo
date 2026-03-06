@@ -42,6 +42,13 @@ namespace StoryGame.UI
         [SerializeField] private Image playerCharacterImage;
         [SerializeField] private Sprite[] playerSprites;
 
+        [Header("Pause Menü")]
+        [SerializeField] private Button menuButton;
+        [SerializeField] private GameObject pauseMenuPanel;
+        [SerializeField] private Button resumeButton;
+        [SerializeField] private Button settingsButton;
+        [SerializeField] private Button mainMenuButton;
+
         private DialogueEngine _dialogueEngine;
         private CharacterState _characterState;
         private IDiamondService _diamondService;
@@ -54,6 +61,23 @@ namespace StoryGame.UI
             _diamondService = ServiceLocator.Get<IDiamondService>();
             UpdateDiamondUI();
             UpdateAffectionBar();
+
+            // Pause menü
+            if (menuButton != null)
+                menuButton.onClick.AddListener(OpenPauseMenu);
+            if (resumeButton != null)
+                resumeButton.onClick.AddListener(ClosePauseMenu);
+            if (settingsButton != null)
+                settingsButton.onClick.AddListener(() => {
+                    ServiceLocator.Get<IAudioService>()?.PlaySFX("button_click");
+                    SceneTransition.LoadScene("Settings");
+                });
+            if (mainMenuButton != null)
+                mainMenuButton.onClick.AddListener(() => {
+                    ServiceLocator.Get<IAudioService>()?.PlaySFX("button_click");
+                    ClosePauseMenu();
+                    SceneTransition.LoadScene("MainMenu");
+                });
 
             // Oyuncu görselini yükle
             int charIndex = PlayerPrefs.GetInt("PlayerCharIndex", 0);
@@ -82,6 +106,8 @@ namespace StoryGame.UI
 
         private void Update()
         {
+            if (pauseMenuPanel != null && pauseMenuPanel.activeSelf) return;
+
             if (Input.GetMouseButtonDown(0))
             {
                 if (typewriter != null && typewriter.IsTyping)
@@ -178,6 +204,7 @@ namespace StoryGame.UI
                     int index = i;
                     choiceButtons[i].onClick.RemoveAllListeners();
                     choiceButtons[i].onClick.AddListener(() => {
+                        if (pauseMenuPanel != null && pauseMenuPanel.activeSelf) return;
                         _dialogueEngine.SelectChoice(index);
                         UpdateDiamondUI();
                     });
@@ -238,6 +265,25 @@ namespace StoryGame.UI
         {
             if (affectionBar != null)
                 affectionBar.UpdateBar(_characterState);
+        }
+
+        private void OpenPauseMenu()
+        {
+            ServiceLocator.Get<IAudioService>()?.PlaySFX("button_click");
+            Time.timeScale = 0f;
+            pauseMenuPanel.SetActive(true);
+            pauseMenuPanel.transform.localScale = Vector3.zero;
+            pauseMenuPanel.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack).SetUpdate(true);
+        }
+
+        private void ClosePauseMenu()
+        {
+            ServiceLocator.Get<IAudioService>()?.PlaySFX("button_click");
+            pauseMenuPanel.transform.DOScale(0f, 0.2f).SetEase(Ease.InBack).SetUpdate(true)
+                .OnComplete(() => {
+                    pauseMenuPanel.SetActive(false);
+                    Time.timeScale = 1f;
+                });
         }
     }
 }
