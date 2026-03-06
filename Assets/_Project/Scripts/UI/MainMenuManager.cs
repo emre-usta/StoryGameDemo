@@ -2,6 +2,7 @@
 using StoryGame.Core;
 using TMPro;
 using UnityEngine;
+using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -89,21 +90,20 @@ namespace StoryGame.UI
         private void ShowDailyRewardPopup(int amount)
         {
             if (dailyRewardPopup == null) return;
-
             if (popupText != null)
-                popupText.text = $"Günlük Ödül\n+{amount}";
-
-            dailyRewardPopup.SetActive(true);
+                popupText.text = $"Günlük Ödül\n+{amount} 💎";
             dailyRewardPopup.transform.localScale = Vector3.zero;
-            dailyRewardPopup.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack)
-                .OnComplete(() =>
-                {
-                    DOVirtual.DelayedCall(2f, () =>
-                    {
-                        dailyRewardPopup.transform.DOScale(0f, 0.3f).SetEase(Ease.InBack)
-                            .OnComplete(() => dailyRewardPopup.SetActive(false));
-                    });
-                });
+            dailyRewardPopup.SetActive(true);
+            StartCoroutine(PopupRoutine());
+        }
+
+        private IEnumerator PopupRoutine()
+        {
+            dailyRewardPopup.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
+            yield return new WaitForSeconds(2.3f);
+            dailyRewardPopup.transform.DOScale(0f, 0.3f).SetEase(Ease.InBack);
+            yield return new WaitForSeconds(0.3f);
+            dailyRewardPopup.SetActive(false);
         }
     }
 }
