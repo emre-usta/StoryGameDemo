@@ -2848,6 +2848,7 @@ GameObject:
   - component: {fileID: 1550285934}
   - component: {fileID: 1550285933}
   - component: {fileID: 1550285932}
+  - component: {fileID: 1550285935}
   m_Layer: 5
   m_Name: MenuButton
   m_TagString: Untagged
@@ -2957,6 +2958,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1550285930}
   m_CullTransparentMesh: 1
+--- !u!114 &1550285935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550285930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14693c94511082046973f989ea8a41d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1696208244
 GameObject:
   m_ObjectHideFlags: 0
@@ -3361,7 +3374,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a1aac1ab40e498e4b974ef7a3c9b7006, type: 3}
   - {fileID: 21300000, guid: 7fe9d9c55cf2d8741bd834025fc448f2, type: 3}
   - {fileID: 21300000, guid: 0cef78286b8e22a48879f712142c5530, type: 3}
-  menuButton: {fileID: 1550285932}
+  pauseButtonHandler: {fileID: 1550285935}
   pauseMenuPanel: {fileID: 903215628}
   resumeButton: {fileID: 1700009010}
   settingsButton: {fileID: 246026958}

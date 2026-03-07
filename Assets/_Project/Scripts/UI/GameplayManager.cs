@@ -43,12 +43,13 @@ namespace StoryGame.UI
         [SerializeField] private Sprite[] playerSprites;
 
         [Header("Pause Menü")]
-        [SerializeField] private Button menuButton;
+        [SerializeField] private PauseButtonHandler pauseButtonHandler;
         [SerializeField] private GameObject pauseMenuPanel;
         [SerializeField] private Button resumeButton;
         [SerializeField] private Button settingsButton;
         [SerializeField] private Button mainMenuButton;
 
+        private bool _blockInput = false;
         private DialogueEngine _dialogueEngine;
         private CharacterState _characterState;
         private IDiamondService _diamondService;
@@ -63,8 +64,8 @@ namespace StoryGame.UI
             UpdateDiamondUI();
             UpdateAffectionBar();
 
-            if (menuButton != null)
-                menuButton.onClick.AddListener(OpenPauseMenu);
+            if (pauseButtonHandler != null)
+                pauseButtonHandler.OnPressed += OpenPauseMenu;
             if (resumeButton != null)
                 resumeButton.onClick.AddListener(ClosePauseMenu);
             if (settingsButton != null)
@@ -113,12 +114,11 @@ namespace StoryGame.UI
                     foreach (var flag in progress.flags)
                         _characterState.SetFlag(flag, 0);
 
-                    // Arka planı yükle
                     string savedBackgroundId = saveService.GetSavedBackgroundId(characterId);
                     if (!string.IsNullOrEmpty(savedBackgroundId))
                     {
                         _currentBackgroundId = savedBackgroundId;
-                        backgroundService?.ChangeBackground(savedBackgroundId);
+                        backgroundService?.SetBackgroundImmediate(savedBackgroundId);
                     }
 
                     _dialogueEngine.StartEpisodeFromNode(dialogueData, _characterState, savedNodeId);
@@ -135,6 +135,12 @@ namespace StoryGame.UI
 
         private void Update()
         {
+            if (_blockInput)
+            {
+                _blockInput = false;
+                return;
+            }
+
             if (pauseMenuPanel != null && pauseMenuPanel.activeSelf) return;
 
             if (Input.GetMouseButtonDown(0))
@@ -327,6 +333,7 @@ namespace StoryGame.UI
 
         private void OpenPauseMenu()
         {
+            _blockInput = true;
             ServiceLocator.Get<IAudioService>()?.PlaySFX("button_click");
             Time.timeScale = 0f;
             pauseMenuPanel.SetActive(true);

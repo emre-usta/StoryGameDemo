@@ -1,7 +1,7 @@
-using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace StoryGame.Core
 {
@@ -33,9 +33,17 @@ namespace StoryGame.Core
         public void ChangeBackground(string backgroundId)
         {
             if (string.IsNullOrEmpty(backgroundId)) return;
-
             if (_backgroundDict.TryGetValue(backgroundId, out var sprite))
                 StartCoroutine(FadeBackground(sprite));
+            else
+                Debug.LogWarning($"[BackgroundService] Background bulunamadý: {backgroundId}");
+        }
+
+        public void SetBackgroundImmediate(string backgroundId)
+        {
+            if (string.IsNullOrEmpty(backgroundId)) return;
+            if (_backgroundDict.TryGetValue(backgroundId, out var sprite))
+                backgroundImage.sprite = sprite;
             else
                 Debug.LogWarning($"[BackgroundService] Background bulunamadý: {backgroundId}");
         }
@@ -51,7 +59,6 @@ namespace StoryGame.Core
         {
             float start = backgroundImage.color.a;
             float elapsed = 0f;
-
             while (elapsed < fadeDuration)
             {
                 elapsed += Time.deltaTime;
@@ -59,7 +66,6 @@ namespace StoryGame.Core
                 backgroundImage.color = new Color(1f, 1f, 1f, alpha);
                 yield return null;
             }
-
             backgroundImage.color = new Color(1f, 1f, 1f, target);
         }
     }
