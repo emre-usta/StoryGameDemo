@@ -73,6 +73,29 @@ namespace StoryGame.Dialogue
 
         private void PlayNode(DialogueNode node)
         {
+            // Flag kontrolü
+            if (!string.IsNullOrEmpty(node.requiredFlag))
+            {
+                bool flagActive = false;
+                switch (node.requiredFlag)
+                {
+                    case "trustEstablished": flagActive = _characterState.trustEstablished; break;
+                    case "secretDiscovered": flagActive = _characterState.secretDiscovered; break;
+                    case "recklessPath": flagActive = _characterState.recklessPath; break;
+                    case "smoothTalker": flagActive = _characterState.smoothTalker; break;
+                    case "deepConnection": flagActive = _characterState.deepConnection; break;
+                }
+
+                if (!flagActive)
+                {
+                    if (!string.IsNullOrEmpty(node.altNodeId))
+                    {
+                        PlayNode(_currentData.GetNode(node.altNodeId));
+                        return;
+                    }
+                }
+            }
+
             _currentNode = node;
 
             switch (node.type)

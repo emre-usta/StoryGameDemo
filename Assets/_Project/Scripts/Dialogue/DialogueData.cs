@@ -37,6 +37,10 @@ namespace StoryGame.Dialogue
         public string backgroundId;
         public string nextNodeId;
         public List<Choice> choices = new List<Choice>();
+
+        // Flag koþulu
+        public string requiredFlag;
+        public string altNodeId;
     }
 
     [CreateAssetMenu(fileName = "DialogueData", menuName = "StoryGame/Dialogue Data")]
@@ -65,4 +69,6 @@ namespace StoryGame.Dialogue
             return nodes[0];
         }
     }
+
+
 }
