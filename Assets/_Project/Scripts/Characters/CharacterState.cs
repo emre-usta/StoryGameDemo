@@ -29,13 +29,24 @@ namespace StoryGame.Characters
 
         [Range(0, 100)] public int affectionPoints;
 
-        // Flags - sadece 1 bölüm taþýnýr
+        // Flags - her flag'in kendi ömrü var (_flagLifetime'a bak)
         public bool trustEstablished;
         public bool secretDiscovered;
         public bool recklessPath;
+        public bool smoothTalker;
+        public bool deepConnection;
 
         // Hangi bölümde set edildi
         private Dictionary<string, int> _flagSetAtEpisode = new Dictionary<string, int>();
+
+        private static readonly Dictionary<string, int> _flagLifetime = new Dictionary<string, int>()
+        {
+            { "smoothTalker", 1 },
+            { "deepConnection", 2 },
+            { "trustEstablished", 1 },
+            { "secretDiscovered", 99 },
+            { "recklessPath", 1 }
+        };
 
         public void SetFlag(string flagName, int currentEpisode)
         {
@@ -44,6 +55,8 @@ namespace StoryGame.Characters
                 case "trustEstablished": trustEstablished = true; break;
                 case "secretDiscovered": secretDiscovered = true; break;
                 case "recklessPath": recklessPath = true; break;
+                case "smoothTalker": smoothTalker = true; break;
+                case "deepConnection": deepConnection = true; break;
                 default: Debug.LogWarning($"[CharacterState] Bilinmeyen flag: {flagName}"); return;
             }
             _flagSetAtEpisode[flagName] = currentEpisode;
@@ -55,10 +68,10 @@ namespace StoryGame.Characters
             var toExpire = new List<string>();
             foreach (var kvp in _flagSetAtEpisode)
             {
-                if (newEpisode - kvp.Value > 1)
+                int lifetime = _flagLifetime.TryGetValue(kvp.Key, out var l) ? l : 1;
+                if (newEpisode - kvp.Value > lifetime)
                     toExpire.Add(kvp.Key);
             }
-
             foreach (var flag in toExpire)
             {
                 switch (flag)
@@ -66,6 +79,8 @@ namespace StoryGame.Characters
                     case "trustEstablished": trustEstablished = false; break;
                     case "secretDiscovered": secretDiscovered = false; break;
                     case "recklessPath": recklessPath = false; break;
+                    case "smoothTalker": smoothTalker = false; break;
+                    case "deepConnection": deepConnection = false; break;
                 }
                 _flagSetAtEpisode.Remove(flag);
                 Debug.Log($"[CharacterState] Flag süresi doldu: {flag}");

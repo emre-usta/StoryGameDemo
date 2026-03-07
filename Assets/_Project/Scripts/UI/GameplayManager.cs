@@ -176,6 +176,8 @@ namespace StoryGame.UI
                 if (_characterState.trustEstablished) flags.Add("trustEstablished");
                 if (_characterState.secretDiscovered) flags.Add("secretDiscovered");
                 if (_characterState.recklessPath) flags.Add("recklessPath");
+                if (_characterState.smoothTalker) flags.Add("smoothTalker");
+                if (_characterState.deepConnection) flags.Add("deepConnection");
                 saveService.SaveProgress(
                     _characterState.characterId,
                     nodeId,
@@ -248,7 +250,7 @@ namespace StoryGame.UI
                     {
                         if (buttonText != null)
                         {
-                            buttonText.text = $"{choice.text} ({choice.diamondCost})";
+                            buttonText.text = ProcessText($"{choice.text} ({choice.diamondCost})");
                             buttonText.color = diamondTextColor;
                         }
                         if (buttonImage != null)
@@ -258,7 +260,7 @@ namespace StoryGame.UI
                     {
                         if (buttonText != null)
                         {
-                            buttonText.text = choice.text;
+                            buttonText.text = ProcessText(choice.text);
                             buttonText.color = normalTextColor;
                         }
                         if (buttonImage != null)

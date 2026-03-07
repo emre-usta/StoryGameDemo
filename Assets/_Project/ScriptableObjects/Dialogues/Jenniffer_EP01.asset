@@ -19,49 +19,196 @@ MonoBehaviour:
   - id: node_001
     type: 0
     speaker: 
-    text: "Jennifer ile sahilde y\xFCr\xFCyorsunuz. Hava g\xFCzel, deniz sakin."
+    text: "\u015Eehrin en kalabal\u0131k gecelerinden biri. Uzun bir haftan\u0131n
+      ard\u0131ndan arkada\u015Flar\u0131n seni bu bara s\xFCr\xFCkledi. M\xFCzik
+      y\xFCksek, \u0131\u015F\u0131klar lo\u015F. Tam k\xF6\u015Feye \xE7ekilmek
+      \xFCzereyken..."
     backgroundId: sahil
     nextNodeId: node_002
     choices: []
   - id: node_002
-    type: 1
-    speaker: Jennifer
-    text: "Ge\xE7 kald\u0131n {playerName}. Ama seni affedece\u011Fim bu sefer."
-    backgroundId: sehir
+    type: 0
+    speaker: 
+    text: "Dirseklerin bir masaya \xE7arp\u0131yor. Bardak kay\u0131yor. Ve tam kar\u015F\u0131ndaki
+      kad\u0131n\u0131n \xFCzerine d\xF6k\xFCl\xFCyor."
+    backgroundId: 
     nextNodeId: node_003
     choices: []
   - id: node_003
+    type: 1
+    speaker: Jennifer
+    text: Harika. Sadece harika.
+    backgroundId: 
+    nextNodeId: node_004
+    choices: []
+  - id: node_004
     type: 2
-    speaker: Player
+    speaker: 
     text: 
     backgroundId: 
     nextNodeId: 
     choices:
-    - text: "\xD6z\xFCr dilerim."
-      nextNodeId: node_004
+    - text: "\xD6z\xFCr dilerim, tamamen kazayd\u0131."
+      nextNodeId: node_005
+      effect:
+        affection: 5
+        setFlag: 
+      isDiamond: 0
+      diamondCost: 0
+    - text: "Bu bar \xE7ok kalabal\u0131k zaten."
+      nextNodeId: node_006
+      effect:
+        affection: 0
+        setFlag: 
+      isDiamond: 0
+      diamondCost: 0
+    - text: "Sana yeni bir i\xE7ki \u0131smarlayay\u0131m, bu geceyi kurtarabilirim
+        belki."
+      nextNodeId: node_006b
+      effect:
+        affection: 10
+        setFlag: smoothTalker
+      isDiamond: 1
+      diamondCost: 5
+  - id: node_005
+    type: 1
+    speaker: Jennifer
+    text: "\xD6z\xFCr m\xFC? En az\u0131ndan d\xFCr\xFCsts\xFCn."
+    backgroundId: 
+    nextNodeId: node_007
+    choices: []
+  - id: node_006
+    type: 1
+    speaker: Jennifer
+    text: "Demek \xF6yle. Kalabal\u0131k m\u0131 su\xE7lu."
+    backgroundId: 
+    nextNodeId: node_007
+    choices: []
+  - id: node_006b
+    type: 1
+    speaker: Jennifer
+    text: "\u0130\xE7ki \u0131smarlayarak kurtar\u0131lacak bir gece de\u011Fil bu."
+    backgroundId: 
+    nextNodeId: node_007
+    choices: []
+  - id: node_007
+    type: 1
+    speaker: Jennifer
+    text: "Ad\u0131n ne en az\u0131ndan, k\u0131yafetimi mahveden ki\u015Finin?"
+    backgroundId: 
+    nextNodeId: node_008
+    choices: []
+  - id: node_008
+    type: 2
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices:
+    - text: '{playerName}'
+      nextNodeId: node_009
+      effect:
+        affection: 5
+        setFlag: 
+      isDiamond: 0
+      diamondCost: 0
+    - text: "\xD6nce sen s\xF6yle."
+      nextNodeId: node_009
       effect:
         affection: 3
         setFlag: 
+      isDiamond: 0
+      diamondCost: 0
+    - text: "Sana \xF6zel bir isim s\xF6yleyeyim mi?"
+      nextNodeId: node_009
+      effect:
+        affection: 10
+        setFlag: smoothTalker
       isDiamond: 1
       diamondCost: 5
-    - text: "Beklemek sana yak\u0131\u015F\u0131yor."
-      nextNodeId: node_004
+  - id: node_009
+    type: 1
+    speaker: Jenniffer
+    text: "Jenniffer. Ve hay\u0131r, telefon numaram yok."
+    backgroundId: 
+    nextNodeId: node_010
+    choices: []
+  - id: node_010
+    type: 0
+    speaker: 
+    text: "Beklemedi\u011Fin bir cevap. Ama g\xF6zleri g\xFCl\xFCyor."
+    backgroundId: 
+    nextNodeId: node_011
+    choices: []
+  - id: node_011
+    type: 2
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices:
+    - text: "Vermek zorunda de\u011Filsin zaten."
+      nextNodeId: node_012
       effect:
         affection: 8
         setFlag: 
       isDiamond: 0
       diamondCost: 0
-  - id: node_004
+    - text: "En az\u0131ndan bir i\xE7ki i\xE7elim."
+      nextNodeId: node_013
+      effect:
+        affection: 5
+        setFlag: 
+      isDiamond: 0
+      diamondCost: 0
+    - text: "Bu gece bitmeden seni tan\u0131mak istiyorum."
+      nextNodeId: node_013
+      effect:
+        affection: 15
+        setFlag: deepConnection
+      isDiamond: 1
+      diamondCost: 8
+  - id: node_012
     type: 1
-    speaker: Jenniffer
-    text: "Haha! Sen hi\xE7 de\u011Fi\u015Fmiyorsun. {playerName}"
+    speaker: Jennifer
+    text: ...
     backgroundId: 
-    nextNodeId: node_005
+    nextNodeId: node_014
     choices: []
-  - id: node_005
+  - id: node_013
+    type: 1
+    speaker: Jennifer
+    text: "Bir i\xE7ki. Sadece bir."
+    backgroundId: 
+    nextNodeId: node_014
+    choices: []
+  - id: node_013
+    type: 1
+    speaker: Jennifer
+    text: "Bir i\xE7ki. Sadece bir."
+    backgroundId: 
+    nextNodeId: node_014
+    choices: []
+  - id: node_014
     type: 0
     speaker: 
-    text: "Jenniffer g\xFCld\xFC. Bir s\xFCre sessizce y\xFCr\xFCd\xFCn\xFCz."
+    text: "Bar\u0131n en karanl\u0131k k\xF6\u015Fesinde saatler ge\xE7iyor. Jenniffer
+      az konu\u015Fuyor ama her kelimesi yerli yerinde. Gitmek \xFCzere kalkt\u0131\u011F\u0131nda..."
+    backgroundId: 
+    nextNodeId: node_015
+    choices: []
+  - id: node_015
+    type: 1
+    speaker: Jennifer
+    text: "Yar\u0131n burada olaca\u011F\u0131m. Saat sekizde. Gelmek istersen..."
+    backgroundId: 
+    nextNodeId: node_016
+    choices: []
+  - id: node_016
+    type: 0
+    speaker: 
+    text: "Telefon numaras\u0131 vermedi. Adres vermedi. Sadece bir zaman. Gelip
+      gelmeyece\u011Fine sen karar vereceksin."
     backgroundId: 
     nextNodeId: 
     choices: []

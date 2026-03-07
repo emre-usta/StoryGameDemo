@@ -30,7 +30,7 @@ namespace StoryGame.Core
 
         public void Load()
         {
-            _diamonds = PlayerPrefs.GetInt(KEY_DIAMONDS, 15);
+            _diamonds = PlayerPrefs.GetInt(KEY_DIAMONDS, 1000);
             Debug.Log($"[SaveService] Oyun yüklendi. Elmas: {_diamonds}");
         }
 
@@ -113,7 +113,7 @@ namespace StoryGame.Core
         public void ResetAll()
         {
             PlayerPrefs.DeleteAll();
-            _diamonds = 15;
+            _diamonds = 1000;
             _unlockedCharacters.Clear();
             _lastPlayedEpisodes.Clear();
             Debug.Log("[SaveService] Tüm veriler sýfýrlandý.");
