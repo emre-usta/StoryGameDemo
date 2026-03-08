@@ -1,0 +1,457 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bff8340c4a2e124b8caff9676c036e8, type: 3}
+  m_Name: Jenniffer_EP03
+  m_EditorClassIdentifier: 
+  episodeId: Jenniffer_ep03
+  characterId: jenniffer
+  episodeIndex: 2
+  nodes:
+  - id: node_001
+    type: 0
+    speaker: 
+    text: "Sabah onu. Sahile geliyorsun. Jenniffer seni bekliyor \u2014 ama bu sefer
+      farkl\u0131 giyinmi\u015F. Daha sade, daha ger\xE7ek. Arkas\u0131nda \u0131ss\u0131z
+      bir yol var ve yolun sonunda b\xFCy\xFCk, terk edilmi\u015F g\xF6r\xFCnen bir
+      ev."
+    backgroundId: 
+    nextNodeId: node_002
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_002
+    type: 1
+    speaker: Jennifer
+    text: "Ge\xE7 kalmad\u0131n. \u0130yi."
+    backgroundId: 
+    nextNodeId: node_003
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_003
+    type: 2
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices:
+    - text: Bu ev ne?
+      nextNodeId: node_004
+      effect:
+        affection: 3
+        setFlag: 
+      isDiamond: 0
+      diamondCost: 0
+    - text: "Seni beklemek g\xFCzeldi."
+      nextNodeId: node_004
+      effect:
+        affection: 6
+        setFlag: 
+      isDiamond: 0
+      diamondCost: 0
+    - text: "Seni g\xF6r\xFCnce her \u015Fey de\u011Fer."
+      nextNodeId: node_004
+      effect:
+        affection: 12
+        setFlag: 
+      isDiamond: 1
+      diamondCost: 5
+    requiredFlag: 
+    altNodeId: 
+  - id: node_004
+    type: 0
+    speaker: 
+    text: "Jenniffer cevap vermeden y\xFCr\xFCmeye ba\u015Fl\u0131yor. Evin kap\u0131s\u0131n\u0131
+      a\xE7\u0131yor \u2014 kilit yok. \u0130\xE7erisi tozlu ama bir zamanlar \xE7ok
+      g\xFCzel oldu\u011Fu belli. B\xFCy\xFCk pencereler, deniz manzaras\u0131, y\xFCksek
+      tavanlar."
+    backgroundId: 
+    nextNodeId: node_005
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_005
+    type: 1
+    speaker: Jenniffer
+    text: "Buras\u0131... ailemin evi. Kimseye s\xF6ylemedim."
+    backgroundId: 
+    nextNodeId: node_006
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_006
+    type: 0
+    speaker: 
+    text: "'Ailemin' derken sesi hafif\xE7e k\u0131r\u0131l\u0131yor. Bu k\u0131r\u0131lganl\u0131\u011F\u0131
+      fark ediyorsun \u2014 ve sessiz kal\u0131yorsun. Bazen en do\u011Fru \u015Fey
+      bu."
+    backgroundId: 
+    nextNodeId: node_008
+    choices: []
+    requiredFlag: trustEstablished
+    altNodeId: node_007
+  - id: node_007
+    type: 0
+    speaker: 
+    text: "'Ailemin' derken sesi hafif\xE7e k\u0131r\u0131l\u0131yor. Ne s\xF6yleyece\u011Fini
+      bilmiyorsun."
+    backgroundId: 
+    nextNodeId: node_008
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_008
+    type: 1
+    speaker: Jennifer
+    text: "Babam \xE7ok zengin. Tan\u0131nm\u0131\u015F biri. Belki ad\u0131n\u0131
+      bile duymu\u015Fsundur."
+    backgroundId: 
+    nextNodeId: node_009
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_009
+    type: 2
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices:
+    - text: "Neden saklad\u0131n bunu?"
+      nextNodeId: node_010
+      effect:
+        affection: 8
+        setFlag: 
+      isDiamond: 0
+      diamondCost: 0
+    - text: "Bu seni de\u011Fi\u015Ftirmiyor."
+      nextNodeId: node_011
+      effect:
+        affection: 10
+        setFlag: 
+      isDiamond: 0
+      diamondCost: 0
+    - text: "Anl\u0131yorum neden s\xF6ylemek istemediydin."
+      nextNodeId: node_012
+      effect:
+        affection: 15
+        setFlag: 
+      isDiamond: 1
+      diamondCost: 10
+    requiredFlag: 
+    altNodeId: 
+  - id: node_010
+    type: 1
+    speaker: Jennifer
+    text: "\xC7\xFCnk\xFC insanlar beni duyunca Jenniffer olmaktan \xE7\u0131k\u0131yorum.
+      Bir soyad\u0131 oluyorum."
+    backgroundId: 
+    nextNodeId: node_013
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_011
+    type: 1
+    speaker: Jenniffer
+    text: "... Bunu s\xF6yleyen az insan var."
+    backgroundId: 
+    nextNodeId: node_013
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_012
+    type: 1
+    speaker: Jennifer
+    text: "Sen... ger\xE7ekten anl\u0131yor musun? Yoksa \xF6yle mi g\xF6r\xFCn\xFCyor?"
+    backgroundId: 
+    nextNodeId: node_013
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_013
+    type: 0
+    speaker: 
+    text: "Jenniffer pencereye y\xFCr\xFCyor. Denize bak\u0131yor. Bu evi, bu s\u0131rr\u0131
+      sana g\xF6stermesi tesad\xFCf de\u011Fil \u2014 ve ikisi de bunu biliyor."
+    backgroundId: 
+    nextNodeId: node_015
+    choices: []
+    requiredFlag: deepConnection
+    altNodeId: node_014
+  - id: node_014
+    type: 0
+    speaker: 
+    text: "Jenniffer pencereye y\xFCr\xFCyor. Denize bak\u0131yor. Uzun bir sessizlik
+      var aram\u0131zda."
+    backgroundId: 
+    nextNodeId: node_015
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_015
+    type: 1
+    speaker: Jennifer
+    text: "'R' diye kaydettim telefonda. Babam\u0131n adam\u0131. Beni takip ediyor
+      \u2014 nerede oldu\u011Fumu bildiriyor. Her zaman."
+    backgroundId: 
+    nextNodeId: node_016
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_016
+    type: 0
+    speaker: 
+    text: "B\xF6l\xFCm 1'deki telefon an\u0131s\u0131 akl\u0131na geliyor. 'R'. Demek
+      buymu\u015F."
+    backgroundId: 
+    nextNodeId: node_017
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_017
+    type: 2
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices:
+    - text: Bu kabul edilemez.
+      nextNodeId: node_018
+      effect:
+        affection: 7
+        setFlag: 
+      isDiamond: 0
+      diamondCost: 0
+    - text: "Ne zaman ba\u015Flad\u0131 bu?"
+      nextNodeId: node_019
+      effect:
+        affection: 5
+        setFlag: 
+      isDiamond: 0
+      diamondCost: 0
+    - text: "Art\u0131k seni takip edemeyecek. Ben buraday\u0131m."
+      nextNodeId: node_020
+      effect:
+        affection: 18
+        setFlag: secretDiscovered
+      isDiamond: 1
+      diamondCost: 8
+    requiredFlag: 
+    altNodeId: 
+  - id: node_018
+    type: 1
+    speaker: Jennifer
+    text: Biliyorum. Ama ne yapabilirim ki?
+    backgroundId: 
+    nextNodeId: node_021
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_019
+    type: 1
+    speaker: Jennifer
+    text: "\xDCniversiteden beri. Be\u015F y\u0131l."
+    backgroundId: 
+    nextNodeId: node_021
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_020
+    type: 0
+    speaker: Jennifer
+    text: "Sen nas\u0131l bu kadar emin konu\u015Fabiliyorsun?"
+    backgroundId: 
+    nextNodeId: node_021
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_021
+    type: 0
+    speaker: 
+    text: "Jenniffer sana d\xF6n\xFCyor. G\xF6zlerinde hem korku hem de bir \u015Feye
+      tutunma iste\u011Fi var. Bunu hemen okuyorsun."
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: smoothTalker
+    altNodeId: node_022
+  - id: node_022
+    type: 0
+    speaker: 
+    text: "Jenniffer sana d\xF6n\xFCyor. G\xF6zlerinde karma\u015F\u0131k bir \u015Fey
+      var \u2014 okumak zor."
+    backgroundId: 
+    nextNodeId: node_023
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_023
+    type: 1
+    speaker: 'Jenniffer '
+    text: "Sana bir \u015Fey sormam laz\u0131m. D\xFCr\xFCst cevap ver."
+    backgroundId: 
+    nextNodeId: node_024
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_024
+    type: 1
+    speaker: Jenniffer
+    text: "Beni ger\xE7ekten \xF6nemsiyorsun. Yoksa bu hikaye ilgini mi \xE7ekiyor?"
+    backgroundId: 
+    nextNodeId: node_025
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_025
+    type: 2
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices:
+    - text: "D\xFCr\xFCst olmak gerekirse... ikisi de."
+      nextNodeId: node_026
+      effect:
+        affection: 5
+        setFlag: 
+      isDiamond: 0
+      diamondCost: 0
+    - text: "Seni \xF6nemsiyorum. Hikaye de\u011Fil, sen."
+      nextNodeId: node_027
+      effect:
+        affection: 12
+        setFlag: 
+      isDiamond: 0
+      diamondCost: 0
+    - text: "\u0130lk gece bardaki o an \u2014 o andan beri sen."
+      nextNodeId: node_028
+      effect:
+        affection: 20
+        setFlag: secretDiscovered
+      isDiamond: 1
+      diamondCost: 10
+    requiredFlag: 
+    altNodeId: 
+  - id: node_026
+    type: 1
+    speaker: Jenniffer
+    text: "En az\u0131ndan d\xFCr\xFCsts\xFCn."
+    backgroundId: 
+    nextNodeId: node_029
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_027
+    type: 1
+    speaker: Jennifer
+    text: "... \u0130nanmak istiyorum buna."
+    backgroundId: 
+    nextNodeId: node_030
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_028
+    type: 1
+    speaker: Jennifer
+    text: O gece ben de hissettim. Ama korktum.
+    backgroundId: 
+    nextNodeId: node_031
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_029
+    type: 0
+    speaker: 
+    text: "Jenniffer ba\u015F\u0131n\u0131 \xE7eviriyor. Bir kap\u0131 kapan\u0131yor
+      gibi hissediyorsun."
+    backgroundId: 
+    nextNodeId: node_032
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_030
+    type: 0
+    speaker: 
+    text: "Jenniffer sana ad\u0131m at\u0131yor. Duvarlar\u0131 yava\u015F\xE7a y\u0131k\u0131l\u0131yor."
+    backgroundId: 
+    nextNodeId: node_033
+    choices: []
+    requiredFlag: trustEstablished
+    altNodeId: node_032
+  - id: node_031
+    type: 0
+    speaker: 
+    text: "Jenniffer g\xF6zlerini kapat\u0131yor. Uzun bir nefes. Sonra sana bak\u0131yor
+      \u2014 bu sefer ger\xE7ekten."
+    backgroundId: 
+    nextNodeId: node_033
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_032
+    type: 0
+    speaker: 
+    text: "Aram\u0131zdaki mesafe ayn\u0131 kal\u0131yor. Ama bir \u015Feyler s\xF6ylenmeden
+      s\xF6ylendi."
+    backgroundId: 
+    nextNodeId: node_034
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_033
+    type: 1
+    speaker: Jennifer
+    text: "Belki... belki bu sefer farkl\u0131 olabilir."
+    backgroundId: 
+    nextNodeId: node_034
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_034
+    type: 0
+    speaker: 
+    text: "G\xFCne\u015F batmaya ba\u015Fl\u0131yor. Pencereden turuncu \u0131\u015F\u0131k
+      i\xE7eri giriyor. Jenniffer h\xE2l\xE2 burada, h\xE2l\xE2 seninle."
+    backgroundId: 
+    nextNodeId: node_035
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_035
+    type: 1
+    speaker: Jennifer
+    text: "Git \u015Fimdi. Ama... Yar\u0131n sabah telefonun \xE7alacak."
+    backgroundId: 
+    nextNodeId: node_036
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_036
+    type: 0
+    speaker: 
+    text: "Bu sefer numara var. Ger\xE7ek bir numara. \u0130lk kez."
+    backgroundId: 
+    nextNodeId: node_037
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_037
+    type: 0
+    speaker: 
+    text: " Eve d\xF6nerken tek d\xFC\u015F\xFCnd\xFC\u011F\xFCn \u015Fey: Bu ne
+      kadar s\xFCrer? Ve daha \xF6nemlisi \u2014 ne kadar s\xFCrmesini istiyorsun?"
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
