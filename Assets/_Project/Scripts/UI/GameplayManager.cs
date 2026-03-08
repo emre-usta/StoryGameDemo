@@ -36,7 +36,7 @@ namespace StoryGame.UI
         [SerializeField] private AffectionBar affectionBar;
 
         [Header("Diyalog Verisi")]
-        [SerializeField] private DialogueData dialogueData;
+        [SerializeField] private CharacterData[] characterDataList;
 
         [Header("Oyuncu")]
         [SerializeField] private Image playerCharacterImage;
@@ -101,9 +101,27 @@ namespace StoryGame.UI
 
             HideAllPanels();
 
-            bool continueGame = PlayerPrefs.GetString("ContinueGame", "false") == "true";
+            // Doğru CharacterData'yı bul
+            CharacterData characterData = null;
+            foreach (var cd in characterDataList)
+            {
+                if (cd.characterId == characterId)
+                {
+                    characterData = cd;
+                    break;
+                }
+            }
+
+            if (characterData == null)
+            {
+                Debug.LogError($"[GameplayManager] CharacterData bulunamadı: {characterId}");
+                return;
+            }
+
             var saveService = ServiceLocator.Get<ISaveService>();
 
+            // Kaldığı yerden devam
+            bool continueGame = PlayerPrefs.GetString("ContinueGame", "false") == "true";
             if (continueGame && saveService != null)
             {
                 string savedNodeId = saveService.GetSavedNodeId(characterId);
@@ -121,16 +139,34 @@ namespace StoryGame.UI
                         backgroundService?.SetBackgroundImmediate(savedBackgroundId);
                     }
 
-                    _dialogueEngine.StartEpisodeFromNode(dialogueData, _characterState, savedNodeId);
-                    Debug.Log($"[GameplayManager] Kaldığı yerden devam: {savedNodeId}");
-                    return;
+                    // Kaydedilen episode'u bul
+                    int savedEpisodeIndex = saveService.GetLastPlayedEpisode(characterId);
+                    DialogueData savedDialogueData = null;
+                    if (characterData.episodes != null && characterData.episodes.Length > savedEpisodeIndex)
+                        savedDialogueData = characterData.episodes[savedEpisodeIndex];
+
+                    if (savedDialogueData != null)
+                    {
+                        _dialogueEngine.StartEpisodeFromNode(savedDialogueData, _characterState, savedNodeId);
+                        Debug.Log($"[GameplayManager] Kaldığı yerden devam: {savedNodeId}, Episode: {savedEpisodeIndex}");
+                        return;
+                    }
                 }
             }
+
+            // Yeni oyun — ilk episode'u başlat
+            int episodeIndex = saveService?.GetLastPlayedEpisode(characterId) ?? 0;
+            DialogueData dialogueData = null;
+            if (characterData.episodes != null && characterData.episodes.Length > episodeIndex)
+                dialogueData = characterData.episodes[episodeIndex];
 
             if (dialogueData != null)
                 _dialogueEngine.StartEpisode(dialogueData, _characterState);
             else
-                Debug.LogWarning("[GameplayManager] DialogueData atanmadı!");
+            {
+                Debug.Log($"[GameplayManager] Tüm bölümler tamamlandı. Episode: {episodeIndex}");
+                SceneTransition.LoadScene("EndingScreen");
+            }
         }
 
         private void Update()
@@ -293,6 +329,13 @@ namespace StoryGame.UI
             ServiceLocator.Get<IAudioService>()?.PlaySFX("episode_complete");
             PlayerPrefs.SetString("LastEnding", ending.ToString());
             PlayerPrefs.SetInt("LastAffection", _characterState.affectionPoints);
+
+            string characterId = _characterState.characterId;
+            var saveService = ServiceLocator.Get<ISaveService>();
+            int currentEpisode = saveService?.GetLastPlayedEpisode(characterId) ?? 0;
+            saveService?.SetLastPlayedEpisode(characterId, currentEpisode + 1);
+            saveService?.DeleteProgress(characterId);
+
             HideAllPanels();
             SceneTransition.LoadScene("EndingScreen");
         }

@@ -25,3 +25,7 @@ MonoBehaviour:
   mystery: 40
   confidence: 85
   playfulness: 70
+  episodes:
+  - {fileID: 11400000, guid: 2bcf14ffc5676184eb72b37682f48b9c, type: 2}
+  - {fileID: 11400000, guid: 25ba7e21cd0fb6d42892034c79efd1a2, type: 2}
+  - {fileID: 11400000, guid: 215535e32899bba4f8d06e5e42ebe73b, type: 2}

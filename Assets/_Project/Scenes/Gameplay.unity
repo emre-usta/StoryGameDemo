@@ -3368,7 +3368,8 @@ MonoBehaviour:
   backgroundService: {fileID: 1354218705}
   diamondText: {fileID: 1379035381}
   affectionBar: {fileID: 116227804}
-  dialogueData: {fileID: 11400000, guid: 25ba7e21cd0fb6d42892034c79efd1a2, type: 2}
+  characterDataList:
+  - {fileID: 11400000, guid: 7f70324c30f592c40950c35b636287e6, type: 2}
   playerCharacterImage: {fileID: 276951129}
   playerSprites:
   - {fileID: 21300000, guid: a1aac1ab40e498e4b974ef7a3c9b7006, type: 3}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Jenniffer_EP02
   m_EditorClassIdentifier: 
   episodeId: jenniffer_ep02
-  characterId: Jennifer
+  characterId: jennifer
   episodeIndex: 1
   nodes:
   - id: node_001
