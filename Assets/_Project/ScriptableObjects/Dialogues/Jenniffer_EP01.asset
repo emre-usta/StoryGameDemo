@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bff8340c4a2e124b8caff9676c036e8, type: 3}
   m_Name: Jenniffer_EP01
   m_EditorClassIdentifier: 
-  episodeId: jenniffer_ep0
+  episodeId: jenniffer_ep01
   characterId: jenniffer
   episodeIndex: 0
   nodes:
@@ -26,6 +26,8 @@ MonoBehaviour:
     backgroundId: sahil
     nextNodeId: node_002
     choices: []
+    requiredFlag: 
+    altNodeId: 
   - id: node_002
     type: 0
     speaker: 
@@ -34,6 +36,8 @@ MonoBehaviour:
     backgroundId: 
     nextNodeId: node_003
     choices: []
+    requiredFlag: 
+    altNodeId: 
   - id: node_003
     type: 1
     speaker: Jennifer
@@ -41,6 +45,8 @@ MonoBehaviour:
     backgroundId: 
     nextNodeId: node_004
     choices: []
+    requiredFlag: 
+    altNodeId: 
   - id: node_004
     type: 2
     speaker: 
@@ -70,6 +76,8 @@ MonoBehaviour:
         setFlag: smoothTalker
       isDiamond: 1
       diamondCost: 5
+    requiredFlag: 
+    altNodeId: 
   - id: node_005
     type: 1
     speaker: Jennifer
@@ -77,6 +85,8 @@ MonoBehaviour:
     backgroundId: 
     nextNodeId: node_007
     choices: []
+    requiredFlag: 
+    altNodeId: 
   - id: node_006
     type: 1
     speaker: Jennifer
@@ -84,6 +94,8 @@ MonoBehaviour:
     backgroundId: 
     nextNodeId: node_007
     choices: []
+    requiredFlag: 
+    altNodeId: 
   - id: node_006b
     type: 1
     speaker: Jennifer
@@ -91,6 +103,8 @@ MonoBehaviour:
     backgroundId: 
     nextNodeId: node_007
     choices: []
+    requiredFlag: 
+    altNodeId: 
   - id: node_007
     type: 1
     speaker: Jennifer
@@ -98,6 +112,8 @@ MonoBehaviour:
     backgroundId: 
     nextNodeId: node_008
     choices: []
+    requiredFlag: 
+    altNodeId: 
   - id: node_008
     type: 2
     speaker: 
@@ -126,6 +142,8 @@ MonoBehaviour:
         setFlag: smoothTalker
       isDiamond: 1
       diamondCost: 5
+    requiredFlag: 
+    altNodeId: 
   - id: node_009
     type: 1
     speaker: Jenniffer
@@ -133,6 +151,8 @@ MonoBehaviour:
     backgroundId: 
     nextNodeId: node_010
     choices: []
+    requiredFlag: 
+    altNodeId: 
   - id: node_010
     type: 0
     speaker: 
@@ -140,6 +160,8 @@ MonoBehaviour:
     backgroundId: 
     nextNodeId: node_011
     choices: []
+    requiredFlag: 
+    altNodeId: 
   - id: node_011
     type: 2
     speaker: 
@@ -168,6 +190,8 @@ MonoBehaviour:
         setFlag: deepConnection
       isDiamond: 1
       diamondCost: 8
+    requiredFlag: 
+    altNodeId: 
   - id: node_012
     type: 1
     speaker: Jennifer
@@ -175,6 +199,8 @@ MonoBehaviour:
     backgroundId: 
     nextNodeId: node_014
     choices: []
+    requiredFlag: 
+    altNodeId: 
   - id: node_013
     type: 1
     speaker: Jennifer
@@ -182,6 +208,8 @@ MonoBehaviour:
     backgroundId: 
     nextNodeId: node_014
     choices: []
+    requiredFlag: 
+    altNodeId: 
   - id: node_013
     type: 1
     speaker: Jennifer
@@ -189,6 +217,8 @@ MonoBehaviour:
     backgroundId: 
     nextNodeId: node_014
     choices: []
+    requiredFlag: 
+    altNodeId: 
   - id: node_014
     type: 0
     speaker: 
@@ -197,6 +227,8 @@ MonoBehaviour:
     backgroundId: 
     nextNodeId: node_015
     choices: []
+    requiredFlag: 
+    altNodeId: 
   - id: node_015
     type: 1
     speaker: Jennifer
@@ -204,6 +236,8 @@ MonoBehaviour:
     backgroundId: 
     nextNodeId: node_016
     choices: []
+    requiredFlag: 
+    altNodeId: 
   - id: node_016
     type: 0
     speaker: 
@@ -212,3 +246,5 @@ MonoBehaviour:
     backgroundId: 
     nextNodeId: 
     choices: []
+    requiredFlag: 
+    altNodeId: 
