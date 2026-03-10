@@ -81,6 +81,8 @@ namespace StoryGame.UI
 
         private void OnDestroy()
         {
+            if (dailyRewardPopup != null)
+                dailyRewardPopup.transform.DOKill();
             if (playButton != null)
                 playButton.onClick.RemoveAllListeners();
             if (settingsButton != null)
@@ -91,7 +93,7 @@ namespace StoryGame.UI
         {
             if (dailyRewardPopup == null) return;
             if (popupText != null)
-                popupText.text = $"Günlük Ödül\n+{amount} 💎";
+                popupText.text = $"Günlük Ödül\n+{amount}";
             dailyRewardPopup.transform.localScale = Vector3.zero;
             dailyRewardPopup.SetActive(true);
             StartCoroutine(PopupRoutine());

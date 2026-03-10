@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2bff8340c4a2e124b8caff9676c036e8, type: 3}
-  m_Name: Jenniffer_EP02
+  m_Name: Jennifer_EP05
   m_EditorClassIdentifier: 
-  episodeId: jenniffer_ep02
+  episodeId: jennifer_ep05
   characterId: jennifer
-  episodeIndex: 1
+  episodeIndex: 4
   nodes:
   - id: node_001
     type: 0
@@ -39,7 +39,7 @@ MonoBehaviour:
     requiredFlag: 
     altNodeId: 
   - id: node_003
-    type: 1
+    type: 0
     speaker: Jenniffer
     text: "Ge\xE7 kalmad\u0131n."
     backgroundId: 
@@ -73,7 +73,7 @@ MonoBehaviour:
     - text: "Notu ald\u0131\u011F\u0131nda neden \u015Fa\u015F\u0131rd\u0131n ki?"
       nextNodeId: node_007
       effect:
-        affection: -2
+        affection: 2
         setFlag: 
       isDiamond: 0
       diamondCost: 0
@@ -88,7 +88,7 @@ MonoBehaviour:
     altNodeId: 
   - id: node_006
     type: 1
-    speaker: Jenniffer
+    speaker: Jennifer
     text: "G\xF6r\xFCyorum."
     backgroundId: 
     nextNodeId: node_009
@@ -97,26 +97,16 @@ MonoBehaviour:
     altNodeId: 
   - id: node_007
     type: 1
-    speaker: Jenniffer
+    speaker: Jennifer
     text: "\u015Ea\u015F\u0131rmad\u0131m."
-    backgroundId: 
-    nextNodeId: node_007b
-    choices: []
-    requiredFlag: 
-    altNodeId: 
-  - id: node_007b
-    type: 0
-    speaker: 
-    text: "K\u0131sa. Kapat\u0131yor. Ama g\xF6zleri bir saniye kayd\u0131 \u2014
-      fark ettin."
     backgroundId: 
     nextNodeId: node_009
     choices: []
     requiredFlag: 
     altNodeId: 
   - id: node_008
-    type: 1
-    speaker: Jenniffer
+    type: 0
+    speaker: Jennifer
     text: Bunu nereden biliyorsun?
     backgroundId: 
     nextNodeId: node_008b
@@ -146,7 +136,7 @@ MonoBehaviour:
     altNodeId: 
   - id: node_010
     type: 1
-    speaker: Jenniffer
+    speaker: Jennifer
     text: "Bal\u0131k yiyor musun?"
     backgroundId: 
     nextNodeId: node_011
@@ -186,7 +176,7 @@ MonoBehaviour:
     - text: "Seninle ayn\u0131 \u015Feyi yiyebilirim."
       nextNodeId: node_015
       effect:
-        affection: 6
+        affection: 8
         setFlag: 
       isDiamond: 0
       diamondCost: 0
@@ -203,7 +193,7 @@ MonoBehaviour:
     altNodeId: 
   - id: node_014
     type: 1
-    speaker: Jenniffer
+    speaker: Jennifer
     text: "Evet. \u015Eimdi sorduk."
     backgroundId: 
     nextNodeId: node_016
@@ -212,7 +202,7 @@ MonoBehaviour:
     altNodeId: 
   - id: node_015
     type: 1
-    speaker: Jenniffer
+    speaker: Jennifer
     text: O zaten en iyisi.
     backgroundId: 
     nextNodeId: node_016
@@ -242,7 +232,7 @@ MonoBehaviour:
     altNodeId: 
   - id: node_018
     type: 1
-    speaker: Jenniffer
+    speaker: Jennifer
     text: "D\xFCn gece ne d\xFC\u015F\xFCnd\xFCn? Nottan sonra."
     backgroundId: 
     nextNodeId: node_019
@@ -291,7 +281,7 @@ MonoBehaviour:
     altNodeId: 
   - id: node_021
     type: 1
-    speaker: Jenniffer
+    speaker: Jennifer
     text: Ve?
     backgroundId: 
     nextNodeId: node_021b
@@ -309,7 +299,7 @@ MonoBehaviour:
     altNodeId: 
   - id: node_022
     type: 1
-    speaker: Jenniffer
+    speaker: Jennifer
     text: "D\xFC\u015F\xFCnmeden hareket ediyorsun demek."
     backgroundId: 
     nextNodeId: node_024
@@ -317,11 +307,11 @@ MonoBehaviour:
     requiredFlag: 
     altNodeId: 
   - id: node_023
-    type: 1
+    type: 0
     speaker: Jenniffer
-    text: 
+    text: ...
     backgroundId: 
-    nextNodeId: node_023b
+    nextNodeId: 
     choices: []
     requiredFlag: 
     altNodeId: 
@@ -337,7 +327,7 @@ MonoBehaviour:
     altNodeId: 
   - id: node_024
     type: 1
-    speaker: Jenniffer
+    speaker: Jennifer
     text: "Ben de d\xFC\u015F\xFCnd\xFCm. Neden not b\u0131rakt\u0131\u011F\u0131m\u0131."
     backgroundId: 
     nextNodeId: node_025
@@ -355,68 +345,10 @@ MonoBehaviour:
     requiredFlag: 
     altNodeId: 
   - id: node_026
-    type: 2
-    speaker: 
-    text: 
-    backgroundId: 
-    nextNodeId: 
-    choices:
-    - text: "Neden b\u0131rakt\u0131n peki?"
-      nextNodeId: node_026a
-      effect:
-        affection: -3
-        setFlag: 
-      isDiamond: 0
-      diamondCost: 0
-    - text: "\u0130yi ki b\u0131rakt\u0131n."
-      nextNodeId: node_026b
-      effect:
-        affection: 5
-        setFlag: 
-      isDiamond: 0
-      diamondCost: 0
-    - text: "(Bir \u015Fey s\xF6ylemiyorsun. Yemeye devam ediyorsun.)"
-      nextNodeId: node_026c
-      effect:
-        affection: 7
-        setFlag: 
-      isDiamond: 0
-      diamondCost: 0
-    requiredFlag: 
-    altNodeId: 
-  - id: node_026a
-    type: 1
-    speaker: Jenniffer
-    text: Sorma.
-    backgroundId: 
-    nextNodeId: node_027
-    choices: []
-    requiredFlag: 
-    altNodeId: 
-  - id: node_026b
-    type: 1
-    speaker: Jenniffer
-    text: Hm.
-    backgroundId: 
-    nextNodeId: node_026d
-    choices: []
-    requiredFlag: 
-    altNodeId: 
-  - id: node_026d
     type: 0
     speaker: 
-    text: "Tek hece. Ama dudaklar\u0131 hafif\xE7e k\u0131vr\u0131ld\u0131 \u2014
-      o da fark etti."
-    backgroundId: 
-    nextNodeId: node_027
-    choices: []
-    requiredFlag: 
-    altNodeId: 
-  - id: node_026c
-    type: 0
-    speaker: 
-    text: "Sessizli\u011Fini fark ediyor. Sana bir an bak\u0131yor. Sonra o da devam
-      ediyor yeme\u011Fe. \u0130ki insan ayn\u0131 ritimde."
+    text: "Yemek bitmek \xFCzere. \u015Earap geliyor \u2014 istemeden, ama Jenniffer'in
+      bu restoranla anla\u015Fmas\u0131 var gibi. Her \u015Fey otomatik."
     backgroundId: 
     nextNodeId: node_027
     choices: []
@@ -425,24 +357,14 @@ MonoBehaviour:
   - id: node_027
     type: 0
     speaker: 
-    text: "Yemek bitmek \xFCzere. \u015Earap geliyor \u2014 istemeden, ama Jenniffer'in
-      bu restoranla anla\u015Fmas\u0131 var gibi. Her \u015Fey otomatik."
+    text: "Jenniffer'in telefonu titre\u015Fiyor. Masan\u0131n \xFCst\xFCnde, y\xFCz\xFC
+      a\u015Fa\u011F\u0131. \xDC\xE7 kez. O bakm\u0131yor."
     backgroundId: 
     nextNodeId: node_028
     choices: []
     requiredFlag: 
     altNodeId: 
   - id: node_028
-    type: 0
-    speaker: 
-    text: "Jenniffer'in telefonu titre\u015Fiyor. Masan\u0131n \xFCst\xFCnde, y\xFCz\xFC
-      a\u015Fa\u011F\u0131. \xDC\xE7 kez. O bakm\u0131yor."
-    backgroundId: 
-    nextNodeId: node_029
-    choices: []
-    requiredFlag: 
-    altNodeId: 
-  - id: node_029
     type: 2
     speaker: 
     text: 
@@ -450,21 +372,21 @@ MonoBehaviour:
     nextNodeId: 
     choices:
     - text: "Telefonun \xE7al\u0131yor."
-      nextNodeId: node_030
+      nextNodeId: node_029
       effect:
-        affection: -2
+        affection: 2
         setFlag: 
       isDiamond: 0
       diamondCost: 0
     - text: "Bakmak zorunda de\u011Filsin."
-      nextNodeId: node_031
+      nextNodeId: node_030
       effect:
         affection: 5
         setFlag: 
       isDiamond: 0
       diamondCost: 0
     - text: "Kim oldu\u011Funu merak etmiyorum. Ama sen merak ediyorsun."
-      nextNodeId: node_032
+      nextNodeId: node_031
       effect:
         affection: 11
         setFlag: 
@@ -472,72 +394,72 @@ MonoBehaviour:
       diamondCost: 8
     requiredFlag: 
     altNodeId: 
-  - id: node_030
+  - id: node_029
     type: 1
-    speaker: Jenniffer
+    speaker: Jennifer
     text: Biliyorum.
     backgroundId: 
-    nextNodeId: node_033
+    nextNodeId: node_032
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_030
+    type: 1
+    speaker: Jennifer
+    text: "Zaten bakm\u0131yorum."
+    backgroundId: 
+    nextNodeId: node_032
     choices: []
     requiredFlag: 
     altNodeId: 
   - id: node_031
     type: 1
-    speaker: Jenniffer
-    text: "Zaten bakm\u0131yorum."
+    speaker: Jennifer
+    text: Merak etmiyorum.
     backgroundId: 
-    nextNodeId: node_033
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_031b
+    type: 0
+    speaker: 
+    text: "Ama yutkunuyor. K\xFC\xE7\xFCk, h\u0131zl\u0131 bir hareket. Fark ediyorsun."
+    backgroundId: 
+    nextNodeId: node_032
     choices: []
     requiredFlag: 
     altNodeId: 
   - id: node_032
-    type: 1
-    speaker: Jenniffer
-    text: Merak etmiyorum.
-    backgroundId: 
-    nextNodeId: node_032b
-    choices: []
-    requiredFlag: 
-    altNodeId: 
-  - id: node_032b
     type: 0
     speaker: 
-    text: "Ama yutkunuyor. K\xFC\xE7\xFCk, h\u0131zl\u0131 bir hareket. Fark ediyorsun."
+    text: "Telefon duruyor. Jenniffer \u015Farab\u0131ndan bir yudum i\xE7iyor. Elleri
+      masada, sakin. Ama \xE7ok sakin."
     backgroundId: 
     nextNodeId: node_033
     choices: []
     requiredFlag: 
     altNodeId: 
   - id: node_033
-    type: 0
-    speaker: 
-    text: "Telefon duruyor. Jenniffer \u015Farab\u0131ndan bir yudum i\xE7iyor. Elleri
-      masada, sakin. Ama \xE7ok sakin."
+    type: 1
+    speaker: Jennifer
+    text: "Bu kasabada ne kadar kalacaks\u0131n?"
     backgroundId: 
     nextNodeId: node_034
     choices: []
     requiredFlag: 
     altNodeId: 
   - id: node_034
-    type: 1
-    speaker: Jenniffer
-    text: "Bu kasabada ne kadar kalacaks\u0131n?"
+    type: 0
+    speaker: 
+    text: "Konu de\u011Fi\u015Fti. Ya da de\u011Fi\u015Fmedi \u2014 belki bu hep
+      ayn\u0131 konuydu."
     backgroundId: 
     nextNodeId: node_035
     choices: []
     requiredFlag: 
     altNodeId: 
   - id: node_035
-    type: 0
-    speaker: 
-    text: "Konu de\u011Fi\u015Fti. Ya da de\u011Fi\u015Fmedi \u2014 belki bu hep
-      ayn\u0131 konuydu."
-    backgroundId: 
-    nextNodeId: node_036
-    choices: []
-    requiredFlag: 
-    altNodeId: 
-  - id: node_036
     type: 2
     speaker: 
     text: 
@@ -545,21 +467,21 @@ MonoBehaviour:
     nextNodeId: 
     choices:
     - text: "Bir hafta planlad\u0131m."
-      nextNodeId: node_037
+      nextNodeId: node_036
       effect:
         affection: 3
         setFlag: 
       isDiamond: 0
       diamondCost: 0
     - text: Bilmiyorum. Belki daha uzun.
-      nextNodeId: node_038
+      nextNodeId: node_037
       effect:
         affection: 5
         setFlag: 
       isDiamond: 0
       diamondCost: 0
     - text: "Sen burada oldu\u011Fun s\xFCrece."
-      nextNodeId: node_039
+      nextNodeId: node_038
       effect:
         affection: 13
         setFlag: recklessPath
@@ -567,49 +489,50 @@ MonoBehaviour:
       diamondCost: 9
     requiredFlag: 
     altNodeId: 
-  - id: node_037
+  - id: node_036
     type: 1
-    speaker: Jenniffer
+    speaker: Jennifer
     text: Bir hafta uzun.
     backgroundId: 
-    nextNodeId: node_040
+    nextNodeId: node_039
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_037
+    type: 1
+    speaker: Jennifer
+    text: Neden daha uzun?
+    backgroundId: 
+    nextNodeId: node_039
     choices: []
     requiredFlag: 
     altNodeId: 
   - id: node_038
     type: 1
-    speaker: Jenniffer
-    text: Bu kasaba seni tutmuyor genellikle.
+    speaker: Jennifer
+    text: "Bu \xE7ok aptalca bir \u015Fey."
     backgroundId: 
-    nextNodeId: node_038b
+    nextNodeId: 
     choices: []
     requiredFlag: 
     altNodeId: 
   - id: node_038b
     type: 0
     speaker: 
-    text: "Sana bak\u0131yor. C\xFCmle bitmedi \u2014 devam\u0131n\u0131 bekliyor
-      gibi."
+    text: "Aptalca diyor. Ama masada durdu\u011Fu yer biraz de\u011Fi\u015Fiyor \u2014
+      fark\u0131nda m\u0131 de\u011Fil mi bilemiyorsun. Sana do\u011Fru, \xE7ok az,
+      ama belirgin."
     backgroundId: 
-    nextNodeId: node_040
+    nextNodeId: node_039
     choices: []
     requiredFlag: 
     altNodeId: 
   - id: node_039
-    type: 1
-    speaker: Jenniffer
-    text: "Bu \xE7ok aptalca bir \u015Fey."
-    backgroundId: 
-    nextNodeId: node_039b
-    choices: []
-    requiredFlag: 
-    altNodeId: 
-  - id: node_039b
     type: 0
     speaker: 
-    text: "Aptalca diyor. Ama masada durdu\u011Fu yer biraz de\u011Fi\u015Fiyor \u2014
-      fark\u0131nda m\u0131 de\u011Fil mi bilemiyorsun. Sana do\u011Fru, \xE7ok az,
-      ama belirgin."
+    text: "Restoran seyrekle\u015Fiyor. I\u015F\u0131klar k\u0131s\u0131lmaya ba\u015Fl\u0131yor.
+      Garson hesab\u0131 getiriyor \u2014 Jenniffer bu sefer sormadan ikisini birden
+      \xF6d\xFCyor."
     backgroundId: 
     nextNodeId: node_040
     choices: []
@@ -618,48 +541,47 @@ MonoBehaviour:
   - id: node_040
     type: 0
     speaker: 
-    text: "Restoran seyrekle\u015Fiyor. I\u015F\u0131klar k\u0131s\u0131lmaya ba\u015Fl\u0131yor.
-      Garson hesab\u0131 getiriyor \u2014 Jenniffer bu sefer sormadan ikisini birden
-      \xF6d\xFCyor."
+    text: ...
     backgroundId: 
-    nextNodeId: node_041
-    choices: []
-    requiredFlag: 
-    altNodeId: 
-  - id: node_041
-    type: 0
-    speaker: 
-    text: 
-    backgroundId: 
-    nextNodeId: node_043
+    nextNodeId: node_042
     choices: []
     requiredFlag: smoothTalker
-    altNodeId: node_042
-  - id: node_042
+    altNodeId: node_041
+  - id: node_041
     type: 0
     speaker: 
     text: "D\u0131\u015Far\u0131 \xE7\u0131k\u0131yorsunuz. Sokak \u0131ss\u0131z,
       hava serinlemi\u015F. Jenniffer cebine ellerini koyuyor."
     backgroundId: 
-    nextNodeId: node_044
+    nextNodeId: node_043
     choices: []
     requiredFlag: 
     altNodeId: 
-  - id: node_043
+  - id: node_042
     type: 0
     speaker: 
     text: "D\u0131\u015Far\u0131 \xE7\u0131k\u0131yorsunuz. Jenniffer bir an duruyor,
       sana bak\u0131yor \u2014 d\xFCn gece kafedeki an geliyor akl\u0131na. O an
       da b\xF6yle durmu\u015Ftu. Sanki bir \u015Fey s\xF6ylemek \xFCzere."
     backgroundId: 
+    nextNodeId: node_043
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_043
+    type: 0
+    speaker: Jennifer
+    text: "Y\xFCr\xFCyelim."
+    backgroundId: 
     nextNodeId: node_044
     choices: []
     requiredFlag: 
     altNodeId: 
   - id: node_044
-    type: 1
-    speaker: Jenniffer
-    text: "Y\xFCr\xFCyelim."
+    type: 0
+    speaker: 
+    text: "Nereye diye sormuyorsun. Y\xFCr\xFCyorsun. Ve yine \u2014 davet yok, ret
+      yok. Sadece iki insan ayn\u0131 y\xF6ne gidiyor."
     backgroundId: 
     nextNodeId: node_045
     choices: []
@@ -668,8 +590,9 @@ MonoBehaviour:
   - id: node_045
     type: 0
     speaker: 
-    text: "Nereye diye sormuyorsun. Y\xFCr\xFCyorsun. Ve yine \u2014 davet yok, ret
-      yok. Sadece iki insan ayn\u0131 y\xF6ne gidiyor."
+    text: "Sahile iniyorsunuz. Gece sahili ba\u015Fka \u2014 \u0131\u015F\u0131klar
+      az, ses az, deniz karanl\u0131k. Dalgalar\u0131n sesi her \u015Feyin \xFCst\xFCne
+      \xF6rt\xFCyor."
     backgroundId: 
     nextNodeId: node_046
     choices: []
@@ -678,9 +601,8 @@ MonoBehaviour:
   - id: node_046
     type: 0
     speaker: 
-    text: "Sahile iniyorsunuz. Gece sahili ba\u015Fka \u2014 \u0131\u015F\u0131klar
-      az, ses az, deniz karanl\u0131k. Dalgalar\u0131n sesi her \u015Feyin \xFCst\xFCne
-      \xF6rt\xFCyor."
+    text: "Jenniffer ayakkab\u0131lar\u0131n\u0131 \xE7\u0131kar\u0131yor. Islak
+      kuma bas\u0131yor. Y\xFCr\xFCyor, konu\u015Fmuyor."
     backgroundId: 
     nextNodeId: node_047
     choices: []
@@ -689,33 +611,23 @@ MonoBehaviour:
   - id: node_047
     type: 0
     speaker: 
-    text: "Jenniffer ayakkab\u0131lar\u0131n\u0131 \xE7\u0131kar\u0131yor. Islak
-      kuma bas\u0131yor. Y\xFCr\xFCyor, konu\u015Fmuyor."
+    text: ...
     backgroundId: 
-    nextNodeId: node_048
-    choices: []
-    requiredFlag: 
-    altNodeId: 
-  - id: node_048
-    type: 0
-    speaker: 
-    text: 
-    backgroundId: 
-    nextNodeId: node_050
+    nextNodeId: node_049
     choices: []
     requiredFlag: sharedSilence
-    altNodeId: node_049
-  - id: node_049
+    altNodeId: node_048
+  - id: node_048
     type: 0
     speaker: 
     text: "Sen de \xE7\u0131kar\u0131yorsun. Yan yana y\xFCr\xFCyorsunuz, aran\u0131zda
       bir kar\u0131\u015F mesafe. Hi\xE7 konu\u015Fmadan."
     backgroundId: 
-    nextNodeId: node_051
+    nextNodeId: node_050
     choices: []
     requiredFlag: 
     altNodeId: 
-  - id: node_050
+  - id: node_049
     type: 0
     speaker: 
     text: "Sen de \xE7\u0131kar\u0131yorsun \u2014 d\xFCn kayay\u0131 payla\u015Ft\u0131\u011F\u0131n
@@ -723,29 +635,29 @@ MonoBehaviour:
       Sonra y\xFCr\xFCmeye devam ediyor. Aran\u0131zda bir kar\u0131\u015F mesafe.
       Hi\xE7 konu\u015Fmadan."
     backgroundId: 
+    nextNodeId: node_050
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_050
+    type: 0
+    speaker: Jennifer
+    text: Bu kasabaya neden geldim biliyor musun?
+    backgroundId: 
     nextNodeId: node_051
     choices: []
     requiredFlag: 
     altNodeId: 
   - id: node_051
-    type: 1
-    speaker: Jenniffer
-    text: Bu kasabaya neden geldim biliyor musun?
+    type: 0
+    speaker: 
+    text: "Duruyor. Y\xFCr\xFCmeyi kesiyor, denize bak\u0131yor."
     backgroundId: 
     nextNodeId: node_052
     choices: []
     requiredFlag: 
     altNodeId: 
   - id: node_052
-    type: 0
-    speaker: 
-    text: "Duruyor. Y\xFCr\xFCmeyi kesiyor, denize bak\u0131yor."
-    backgroundId: 
-    nextNodeId: node_053
-    choices: []
-    requiredFlag: 
-    altNodeId: 
-  - id: node_053
     type: 2
     speaker: 
     text: 
@@ -753,70 +665,81 @@ MonoBehaviour:
     nextNodeId: 
     choices:
     - text: Bilmiyorum. Anlat.
-      nextNodeId: node_054
+      nextNodeId: node_053
       effect:
-        affection: -2
+        affection: 3
         setFlag: 
       isDiamond: 0
       diamondCost: 0
     - text: "Tatil de\u011Fil diye s\xF6yledin. O kadar biliyorum."
-      nextNodeId: node_055
+      nextNodeId: node_054
       effect:
         affection: 5
         setFlag: 
       isDiamond: 0
       diamondCost: 0
     - text: "Anlatmak zorunda de\u011Filsin. Ama buraday\u0131m."
-      nextNodeId: node_056
+      nextNodeId: node_055
       effect:
-        affection: 11
-        setFlag: 
+        affection: 12
+        setFlag: trustEstablished
       isDiamond: 1
       diamondCost: 10
     requiredFlag: 
     altNodeId: 
-  - id: node_054
+  - id: node_053
     type: 1
-    speaker: Jenniffer
+    speaker: Jennifer
     text: "Anlat. \u0130lgin\xE7."
     backgroundId: 
-    nextNodeId: node_057
+    nextNodeId: node_056
     choices: []
     requiredFlag: 
     altNodeId: 
-  - id: node_055
+  - id: node_054
     type: 1
-    speaker: Jenniffer
+    speaker: Jennifer
     text: Dikkat ediyorsun.
     backgroundId: 
-    nextNodeId: node_056b
+    nextNodeId: 
     choices: []
     requiredFlag: 
-    altNodeId: 
-  - id: node_056
+    altNodeId: node_056
+  - id: node_055
     type: 1
-    speaker: Jenniffer
+    speaker: Jennifer
     text: "Neden hep bunu s\xF6yl\xFCyorsun?"
     backgroundId: 
-    nextNodeId: node_056b
+    nextNodeId: node_055b
     choices: []
     requiredFlag: 
     altNodeId: 
-  - id: node_056b
+  - id: node_055b
     type: 0
     speaker: 
     text: "Sormadan \xF6nce cevab\u0131 biliyor gibi soruyor. K\u0131zg\u0131n de\u011Fil
       \u2014 kafas\u0131 kar\u0131\u015F\u0131k."
+    backgroundId: 
+    nextNodeId: node_056
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_056
+    type: 0
+    speaker: Jennifer
+    text: "Bir \u015Feyden ka\xE7\u0131yorum. Ama buras\u0131 da art\u0131k yeterli
+      de\u011Fil."
     backgroundId: 
     nextNodeId: node_057
     choices: []
     requiredFlag: 
     altNodeId: 
   - id: node_057
-    type: 1
-    speaker: Jenniffer
-    text: "Bir \u015Feyden ka\xE7\u0131yorum. Ama buras\u0131 da art\u0131k yeterli
-      de\u011Fil."
+    type: 0
+    speaker: 
+    text: "S\xF6yl\xFCyor. Sade. A\xE7\u0131klam\u0131yor \u2014 ne oldu\u011Funu
+      s\xF6ylemiyor, ne kadar s\xFCrd\xFC\u011F\xFCn\xFC s\xF6ylemiyor. Sadece bu
+      c\xFCmleyi koyuyor ortaya."
     backgroundId: 
     nextNodeId: node_058
     choices: []
@@ -825,62 +748,51 @@ MonoBehaviour:
   - id: node_058
     type: 0
     speaker: 
-    text: "S\xF6yl\xFCyor. Sade. A\xE7\u0131klam\u0131yor \u2014 ne oldu\u011Funu
-      s\xF6ylemiyor, ne kadar s\xFCrd\xFC\u011F\xFCn\xFC s\xF6ylemiyor. Sadece bu
-      c\xFCmleyi koyuyor ortaya."
+    text: ...
     backgroundId: 
-    nextNodeId: node_059
-    choices: []
-    requiredFlag: 
-    altNodeId: 
-  - id: node_059
-    type: 0
-    speaker: 
-    text: 
-    backgroundId: 
-    nextNodeId: node_061
+    nextNodeId: node_060
     choices: []
     requiredFlag: deepConnection
-    altNodeId: node_060
-  - id: node_060
+    altNodeId: node_059
+  - id: node_059
     type: 0
     speaker: 
     text: "Denize bak\u0131yorsunuz. Sessizlik."
     backgroundId: 
-    nextNodeId: node_062
+    nextNodeId: node_061
     choices: []
     requiredFlag: 
     altNodeId: 
-  - id: node_061
+  - id: node_060
     type: 0
     speaker: 
     text: "D\xFCn bal\u0131k\xE7\u0131ya git dedi\u011Finde \u2014 bu y\xFCzden dedi,
       hissediyorsun. Buradan ayr\u0131lmadan \xF6nce birileriyle konu\u015Fmak istedi.
       Seninle."
     backgroundId: 
+    nextNodeId: node_061
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_061
+    type: 0
+    speaker: Jenniffer
+    text: "Yar\u0131n burada olmayaca\u011F\u0131m."
+    backgroundId: 
     nextNodeId: node_062
     choices: []
     requiredFlag: 
     altNodeId: 
   - id: node_062
-    type: 1
-    speaker: Jenniffer
-    text: "Yar\u0131n burada olmayaca\u011F\u0131m."
+    type: 0
+    speaker: 
+    text: "D\xF6n\xFCyor sana. \u0130lk kez bu gece bu kadar do\u011Frudan bak\u0131yor."
     backgroundId: 
     nextNodeId: node_063
     choices: []
     requiredFlag: 
     altNodeId: 
   - id: node_063
-    type: 0
-    speaker: 
-    text: "D\xF6n\xFCyor sana. \u0130lk kez bu gece bu kadar do\u011Frudan bak\u0131yor."
-    backgroundId: 
-    nextNodeId: node_064
-    choices: []
-    requiredFlag: 
-    altNodeId: 
-  - id: node_064
     type: 2
     speaker: 
     text: 
@@ -888,61 +800,79 @@ MonoBehaviour:
     nextNodeId: 
     choices:
     - text: Nereye gidiyorsun?
-      nextNodeId: node_065
+      nextNodeId: node_064
       effect:
         affection: 3
         setFlag: 
       isDiamond: 0
       diamondCost: 0
     - text: Ne zaman karar verdin?
-      nextNodeId: node_066
+      nextNodeId: node_065
       effect:
-        affection: 5
+        affection: 4
         setFlag: 
       isDiamond: 0
       diamondCost: 0
     - text: Gitmeni istemiyorum.
-      nextNodeId: node_067
+      nextNodeId: node_066
       effect:
-        affection: 12
-        setFlag: 
+        affection: 14
+        setFlag: recklessPath
       isDiamond: 1
       diamondCost: 10
     requiredFlag: 
     altNodeId: 
-  - id: node_065
+  - id: node_064
     type: 1
-    speaker: Jenniffer
+    speaker: Jennifer
     text: "Bilmiyorum hen\xFCz."
     backgroundId: 
-    nextNodeId: node_069
+    nextNodeId: node_067
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_065
+    type: 0
+    speaker: Jennifer
+    text: Bu gece.
+    backgroundId: 
+    nextNodeId: node_067
     choices: []
     requiredFlag: 
     altNodeId: 
   - id: node_066
     type: 1
-    speaker: Jenniffer
-    text: Bu gece.
-    backgroundId: 
-    nextNodeId: node_069
-    choices: []
-    requiredFlag: 
-    altNodeId: 
-  - id: node_067
-    type: 1
-    speaker: Jenniffer
+    speaker: Jennifer
     text: "Bunu s\xF6ylemek i\xE7in ne hakk\u0131n var?"
     backgroundId: 
-    nextNodeId: node_067b
+    nextNodeId: node_066b
     choices: []
     requiredFlag: 
     altNodeId: 
-  - id: node_067b
+  - id: node_066b
     type: 0
     speaker: 
     text: "K\u0131zg\u0131n de\u011Fil. \u015Ea\u015F\u0131rm\u0131\u015F. Sanki
       bu c\xFCmleyi duyaca\u011F\u0131n\u0131 hi\xE7 beklemiyordu \u2014 ve \u015Fimdi
       ne yapaca\u011F\u0131n\u0131 bilmiyor."
+    backgroundId: 
+    nextNodeId: node_067
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_067
+    type: 0
+    speaker: 
+    text: "Jenniffer tekrar denize d\xF6n\xFCyor. Uzun bir nefes al\u0131yor."
+    backgroundId: 
+    nextNodeId: node_068
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_068
+    type: 1
+    speaker: Jennifer
+    text: "Belki gitmeyece\u011Fim. Hen\xFCz bilmiyorum."
     backgroundId: 
     nextNodeId: node_069
     choices: []
@@ -951,108 +881,13 @@ MonoBehaviour:
   - id: node_069
     type: 0
     speaker: 
-    text: "Jenniffer tekrar denize d\xF6n\xFCyor. Uzun bir nefes al\u0131yor."
+    text: "Hen\xFCz' diyor. Bu kelimeyi se\xE7iyor. Fark ediyorsun."
     backgroundId: 
     nextNodeId: node_070
     choices: []
     requiredFlag: 
     altNodeId: 
   - id: node_070
-    type: 1
-    speaker: Jenniffer
-    text: "Belki gitmeyece\u011Fim. Hen\xFCz bilmiyorum."
-    backgroundId: 
-    nextNodeId: node_071
-    choices: []
-    requiredFlag: 
-    altNodeId: 
-  - id: node_071
-    type: 0
-    speaker: 
-    text: "'Hen\xFCz' diyor. Bu kelimeyi se\xE7iyor. Fark ediyorsun."
-    backgroundId: 
-    nextNodeId: node_072
-    choices: []
-    requiredFlag: 
-    altNodeId: 
-  - id: node_072
-    type: 2
-    speaker: 
-    text: 
-    backgroundId: 
-    nextNodeId: 
-    choices:
-    - text: "'Hen\xFCz' mi dedin?"
-      nextNodeId: node_072a
-      effect:
-        affection: 8
-        setFlag: 
-      isDiamond: 0
-      diamondCost: 0
-    - text: "Umar\u0131m kal\u0131rs\u0131n."
-      nextNodeId: node_072b
-      effect:
-        affection: 4
-        setFlag: 
-      isDiamond: 0
-      diamondCost: 0
-    - text: "Karar\u0131n\u0131 ben vermeyeyim senin i\xE7in."
-      nextNodeId: node_072c
-      effect:
-        affection: -3
-        setFlag: 
-      isDiamond: 0
-      diamondCost: 0
-    requiredFlag: 
-    altNodeId: 
-  - id: node_072a
-    type: 1
-    speaker: Jenniffer
-    text: Dedim.
-    backgroundId: 
-    nextNodeId: node_072d
-    choices: []
-    requiredFlag: 
-    altNodeId: 
-  - id: node_072d
-    type: 0
-    speaker: 
-    text: "K\u0131sa. Ama bu kez ka\xE7m\u0131yor \u2014 g\xF6zlerin i\xE7ine bak\u0131yor.
-      Fark etmesini fark etti."
-    backgroundId: 
-    nextNodeId: node_073
-    choices: []
-    requiredFlag: 
-    altNodeId: 
-  - id: node_072b
-    type: 1
-    speaker: Jenniffer
-    text: "Ummak ne i\u015Fe yarar."
-    backgroundId: 
-    nextNodeId: node_073
-    choices: []
-    requiredFlag: 
-    altNodeId: 
-  - id: node_072c
-    type: 1
-    speaker: Jenniffer
-    text: Vermiyorum zaten.
-    backgroundId: 
-    nextNodeId: node_072e
-    choices: []
-    requiredFlag: 
-    altNodeId: 
-  - id: node_072e
-    type: 0
-    speaker: 
-    text: "S\xF6yl\xFCyor. Ama biraz so\u011Fudu \u2014 ad\u0131m geri att\u0131n,
-      o da att\u0131."
-    backgroundId: 
-    nextNodeId: node_073
-    choices: []
-    requiredFlag: 
-    altNodeId: 
-  - id: node_073
     type: 2
     speaker: 
     text: 
@@ -1060,21 +895,21 @@ MonoBehaviour:
     nextNodeId: 
     choices:
     - text: "Kal\u0131rsan bulu\u015Fabiliriz yar\u0131n."
-      nextNodeId: node_074
+      nextNodeId: node_071
       effect:
         affection: 3
         setFlag: 
       isDiamond: 0
       diamondCost: 0
     - text: "Gidersen de kal\u0131rsan da \u2014 biliyorsun art\u0131k."
-      nextNodeId: node_075
+      nextNodeId: node_072
       effect:
-        affection: 7
+        affection: 6
         setFlag: 
       isDiamond: 0
       diamondCost: 0
     - text: "Sabah sahilde ol. Ben orada olaca\u011F\u0131m."
-      nextNodeId: node_076
+      nextNodeId: node_073
       effect:
         affection: 12
         setFlag: deepConnection
@@ -1082,73 +917,73 @@ MonoBehaviour:
       diamondCost: 10
     requiredFlag: 
     altNodeId: 
-  - id: node_074
+  - id: node_071
     type: 1
-    speaker: Jenniffer
+    speaker: Jennifer
     text: Belki.
     backgroundId: 
-    nextNodeId: node_077
+    nextNodeId: node_074
     choices: []
     requiredFlag: 
     altNodeId: 
-  - id: node_075
+  - id: node_072
     type: 1
-    speaker: Jenniffer
+    speaker: Jennifer
     text: Ne biliyorum ben?
     backgroundId: 
-    nextNodeId: node_077
+    nextNodeId: node_074
     choices: []
     requiredFlag: 
     altNodeId: 
-  - id: node_076
-    type: 1
-    speaker: Jenniffer
+  - id: node_073
+    type: 0
+    speaker: Jennifer
     text: Bunu garanti mi veriyorsun?
     backgroundId: 
-    nextNodeId: node_076b
+    nextNodeId: node_073b
     choices: []
     requiredFlag: 
     altNodeId: 
-  - id: node_076b
+  - id: node_073b
     type: 0
     speaker: 
     text: "Cevap vermiyorsun. G\xFCl\xFCms\xFCyorsun \u2014 k\xFC\xE7\xFCk, ger\xE7ek.
       Jenniffer ba\u015F\u0131n\u0131 \xE7eviriyor ama ge\xE7. G\xF6rd\xFC."
+    backgroundId: 
+    nextNodeId: node_074
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_074
+    type: 0
+    speaker: 
+    text: "Jenniffer geri d\xF6n\xFCyor kasabaya. Seni beklemeden, ama yava\u015F.
+      Islak kumun \xFCst\xFCnde ayak izleri b\u0131rak\u0131yor."
+    backgroundId: 
+    nextNodeId: node_075
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_075
+    type: 0
+    speaker: 
+    text: "Dalgalar geliyor. Gitmiyor. Birini siliyor, birini b\u0131rak\u0131yor."
+    backgroundId: 
+    nextNodeId: node_076
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_076
+    type: 0
+    speaker: 
+    text: "Sabah sahile \xE7\u0131kt\u0131\u011F\u0131nda Jenniffer'in bavulunun
+      h\xE2l\xE2 otelde oldu\u011Funu g\xF6receksin. Gitmedi."
     backgroundId: 
     nextNodeId: node_077
     choices: []
     requiredFlag: 
     altNodeId: 
   - id: node_077
-    type: 0
-    speaker: 
-    text: "Jenniffer geri d\xF6n\xFCyor kasabaya. Seni beklemeden, ama yava\u015F.
-      Islak kumun \xFCst\xFCnde ayak izleri b\u0131rak\u0131yor."
-    backgroundId: 
-    nextNodeId: node_078
-    choices: []
-    requiredFlag: 
-    altNodeId: 
-  - id: node_078
-    type: 0
-    speaker: 
-    text: "Dalgalar geliyor. Gitmiyor. Birini siliyor, birini b\u0131rak\u0131yor."
-    backgroundId: 
-    nextNodeId: node_079
-    choices: []
-    requiredFlag: 
-    altNodeId: 
-  - id: node_079
-    type: 0
-    speaker: 
-    text: "Sabah sahile \xE7\u0131kt\u0131\u011F\u0131nda Jenniffer'in bavulunun
-      h\xE2l\xE2 otelde oldu\u011Funu g\xF6receksin. Gitmedi."
-    backgroundId: 
-    nextNodeId: node_080
-    choices: []
-    requiredFlag: 
-    altNodeId: 
-  - id: node_080
     type: 0
     speaker: 
     text: "Bu gece bunu bilmiyorsun. Ama bir \u015Feyin bitmedi\u011Fini hissediyorsun.

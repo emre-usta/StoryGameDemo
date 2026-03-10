@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace StoryGame.Characters
@@ -27,25 +27,30 @@ namespace StoryGame.Characters
     {
         public string characterId;
 
-        [Range(0, 100)] public int affectionPoints;
+        // Negatif affection desteklenir; görsel bar 0'da sabitlenir ama hesaplama gerçek değerle yapılır
+        public int affectionPoints;
 
-        // Flags - her flag'in kendi �mr� var (_flagLifetime'a bak)
+        // Flags - her flag'in kendi ömrü var (_flagLifetime'a bak)
         public bool trustEstablished;
         public bool secretDiscovered;
         public bool recklessPath;
         public bool smoothTalker;
         public bool deepConnection;
+        public bool firstCrack;      // EP01 C4 💎 → EP03'te etkili
+        public bool sharedSilence;   // EP01 C7 💎 → EP02'de etkili
 
-        // Hangi b�l�mde set edildi
+        // Hangi bölümde set edildi
         private Dictionary<string, int> _flagSetAtEpisode = new Dictionary<string, int>();
 
         private static readonly Dictionary<string, int> _flagLifetime = new Dictionary<string, int>()
         {
-            { "smoothTalker", 1 },
-            { "deepConnection", 2 },
-            { "trustEstablished", 1 },
+            { "smoothTalker",     1  },
+            { "deepConnection",   2  },
+            { "trustEstablished", 2  },
             { "secretDiscovered", 99 },
-            { "recklessPath", 1 }
+            { "recklessPath",     1  },
+            { "firstCrack",       2  },  // EP01 → EP03
+            { "sharedSilence",    1  },  // EP01 → EP02
         };
 
         public void SetFlag(string flagName, int currentEpisode)
@@ -57,10 +62,12 @@ namespace StoryGame.Characters
                 case "recklessPath": recklessPath = true; break;
                 case "smoothTalker": smoothTalker = true; break;
                 case "deepConnection": deepConnection = true; break;
+                case "firstCrack": firstCrack = true; break;
+                case "sharedSilence": sharedSilence = true; break;
                 default: Debug.LogWarning($"[CharacterState] Bilinmeyen flag: {flagName}"); return;
             }
             _flagSetAtEpisode[flagName] = currentEpisode;
-            Debug.Log($"[CharacterState] Flag set edildi: {flagName} (B�l�m {currentEpisode})");
+            Debug.Log($"[CharacterState] Flag set edildi: {flagName} (Bölüm {currentEpisode})");
         }
 
         public void ExpireFlags(int newEpisode)
@@ -81,15 +88,34 @@ namespace StoryGame.Characters
                     case "recklessPath": recklessPath = false; break;
                     case "smoothTalker": smoothTalker = false; break;
                     case "deepConnection": deepConnection = false; break;
+                    case "firstCrack": firstCrack = false; break;
+                    case "sharedSilence": sharedSilence = false; break;
                 }
                 _flagSetAtEpisode.Remove(flag);
-                Debug.Log($"[CharacterState] Flag s�resi doldu: {flag}");
+                Debug.Log($"[CharacterState] Flag süresi doldu: {flag}");
             }
+        }
+
+        // DialogueEngine'in flag kontrolü için — switch yerine tek metod
+        public bool GetFlag(string flagName)
+        {
+            return flagName switch
+            {
+                "trustEstablished" => trustEstablished,
+                "secretDiscovered" => secretDiscovered,
+                "recklessPath" => recklessPath,
+                "smoothTalker" => smoothTalker,
+                "deepConnection" => deepConnection,
+                "firstCrack" => firstCrack,
+                "sharedSilence" => sharedSilence,
+                _ => false
+            };
         }
 
         public void ModifyAffection(int amount)
         {
-            affectionPoints = Mathf.Clamp(affectionPoints + amount, 0, 100);
+            // Negatif değerler desteklenir; -999 alt sınır, 200 üst sınır
+            affectionPoints = Mathf.Clamp(affectionPoints + amount, -999, 200);
             Debug.Log($"[CharacterState] Affection: {affectionPoints} ({(amount >= 0 ? "+" : "")}{amount})");
         }
 
@@ -109,7 +135,7 @@ namespace StoryGame.Characters
         {
             if (secretDiscovered) return EndingType.SecretFaceoff;
             if (affectionPoints >= 75 && trustEstablished) return EndingType.DeepBond;
-            if (affectionPoints >= 60 && recklessPath) return EndingType.PassionateChaos;
+            if (affectionPoints >= 50 && recklessPath) return EndingType.PassionateChaos;
             if (affectionPoints >= 40) return EndingType.CasualFriend;
             return EndingType.ColdGoodbye;
         }

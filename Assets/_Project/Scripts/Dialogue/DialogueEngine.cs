@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 using StoryGame.Core;
 using StoryGame.Characters;
@@ -24,11 +24,24 @@ namespace StoryGame.Dialogue
             _characterState = characterState;
             _currentEpisodeIndex = data.episodeIndex;
 
-            Debug.Log($"[DialogueEngine] B�l�m ba�lad�: {data.episodeId}");
+            Debug.Log($"[DialogueEngine] Bölüm başladı: {data.episodeId}");
 
             var firstNode = data.GetFirstNode();
             if (firstNode != null)
                 PlayNode(firstNode);
+        }
+
+        public void StartEpisodeFromNode(DialogueData data, CharacterState characterState, string nodeId)
+        {
+            _currentData = data;
+            _characterState = characterState;
+            _currentEpisodeIndex = data.episodeIndex;
+            Debug.Log($"[DialogueEngine] Kaldığı yerden devam: {nodeId}");
+            var node = data.GetNode(nodeId);
+            if (node != null)
+                PlayNode(node);
+            else
+                StartEpisode(data, characterState);
         }
 
         public void Advance()
@@ -50,7 +63,7 @@ namespace StoryGame.Dialogue
 
             var choice = _currentNode.choices[choiceIndex];
 
-            // Diamond kontrol�
+            // Diamond kontrolü
             if (choice.isDiamond)
             {
                 var diamonds = ServiceLocator.Get<IDiamondService>();
@@ -64,7 +77,7 @@ namespace StoryGame.Dialogue
             // Effect uygula
             ApplyEffect(choice.effect);
 
-            // Sonraki node'a ge�
+            // Sonraki node'a geç
             if (!string.IsNullOrEmpty(choice.nextNodeId))
                 PlayNode(_currentData.GetNode(choice.nextNodeId));
             else
@@ -73,29 +86,45 @@ namespace StoryGame.Dialogue
 
         private void PlayNode(DialogueNode node)
         {
-            // Flag kontrol�
-            if (!string.IsNullOrEmpty(node.requiredFlag))
+            if (node == null)
             {
-                bool flagActive = false;
-                switch (node.requiredFlag)
-                {
-                    case "trustEstablished": flagActive = _characterState.trustEstablished; break;
-                    case "secretDiscovered": flagActive = _characterState.secretDiscovered; break;
-                    case "recklessPath": flagActive = _characterState.recklessPath; break;
-                    case "smoothTalker": flagActive = _characterState.smoothTalker; break;
-                    case "deepConnection": flagActive = _characterState.deepConnection; break;
-                }
-
-                if (!flagActive)
-                {
-                    if (!string.IsNullOrEmpty(node.altNodeId))
-                    {
-                        PlayNode(_currentData.GetNode(node.altNodeId));
-                        return;
-                    }
-                }
+                Debug.LogError("[DialogueEngine] PlayNode: null node, bölüm sonlandırılıyor.");
+                EndEpisode();
+                return;
             }
 
+            // ── DURUM 1: requiredFlag dolu → flag kontrolü ──────────────────
+            if (!string.IsNullOrEmpty(node.requiredFlag))
+            {
+                bool flagActive = _characterState.GetFlag(node.requiredFlag);
+                Debug.Log($"[DialogueEngine] Flag check — {node.requiredFlag}: {flagActive}");
+
+                if (!flagActive && !string.IsNullOrEmpty(node.altNodeId))
+                {
+                    PlayNode(_currentData.GetNode(node.altNodeId));
+                    return;
+                }
+                // flag aktifse (veya altNodeId yoksa) normal devam
+            }
+            // ── DURUM 2: requiredFlag boş + altNodeId dolu = affection kapısı
+            // EP03 node_111: CasualFriend (≥40) vs ColdGoodbye (<40)
+            else if (!string.IsNullOrEmpty(node.altNodeId))
+            {
+                var ending = _characterState.CalculateEnding();
+                bool casualOrBetter = ending != EndingType.ColdGoodbye;
+                Debug.Log($"[DialogueEngine] Affection gate @ {node.id} — " +
+                          $"Affection: {_characterState.affectionPoints}, Ending: {ending} → " +
+                          $"{(casualOrBetter ? node.nextNodeId : node.altNodeId)}");
+
+                if (!casualOrBetter)
+                {
+                    PlayNode(_currentData.GetNode(node.altNodeId));
+                    return;
+                }
+                // casualOrBetter → normal devam (nextNodeId ile)
+            }
+
+            // Normal node — oynat
             _currentNode = node;
 
             switch (node.type)
@@ -125,25 +154,14 @@ namespace StoryGame.Dialogue
 
         private void EndEpisode()
         {
+            // Önce ending hesapla — flagler hâlâ aktifken
+            var ending = _characterState.CalculateEnding();
+            Debug.Log($"[DialogueEngine] Bölüm bitti. Ending: {ending}, Affection: {_characterState.affectionPoints}");
+
+            // Sonra süresi dolan flagleri temizle
             _characterState.ExpireFlags(_currentEpisodeIndex + 1);
 
-            var ending = _characterState.CalculateEnding();
-            Debug.Log($"[DialogueEngine] B�l�m bitti. Ending: {ending}, Affection: {_characterState.affectionPoints}");
-
             OnEpisodeEnded?.Invoke(ending);
-        }
-
-        public void StartEpisodeFromNode(DialogueData data, CharacterState characterState, string nodeId)
-        {
-            _currentData = data;
-            _characterState = characterState;
-            _currentEpisodeIndex = data.episodeIndex;
-            Debug.Log($"[DialogueEngine] Kald��� yerden devam: {nodeId}");
-            var node = data.GetNode(nodeId);
-            if (node != null)
-                PlayNode(node);
-            else
-                StartEpisode(data, characterState);
         }
     }
 }

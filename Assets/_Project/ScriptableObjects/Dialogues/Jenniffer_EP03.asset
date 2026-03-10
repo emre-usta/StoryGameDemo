@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bff8340c4a2e124b8caff9676c036e8, type: 3}
   m_Name: Jenniffer_EP03
   m_EditorClassIdentifier: 
-  episodeId: Jenniffer_ep03
+  episodeId: jenniffer_ep03
   characterId: jenniffer
   episodeIndex: 2
   nodes:
@@ -47,21 +47,21 @@ MonoBehaviour:
     - text: Bu ev ne?
       nextNodeId: node_004
       effect:
-        affection: 3
+        affection: 2
         setFlag: 
       isDiamond: 0
       diamondCost: 0
     - text: "Seni beklemek g\xFCzeldi."
       nextNodeId: node_004
       effect:
-        affection: 6
+        affection: 4
         setFlag: 
       isDiamond: 0
       diamondCost: 0
     - text: "Seni g\xF6r\xFCnce her \u015Fey de\u011Fer."
       nextNodeId: node_004
       effect:
-        affection: 12
+        affection: 10
         setFlag: 
       isDiamond: 1
       diamondCost: 5
@@ -129,21 +129,21 @@ MonoBehaviour:
     - text: "Neden saklad\u0131n bunu?"
       nextNodeId: node_010
       effect:
-        affection: 8
+        affection: 4
         setFlag: 
       isDiamond: 0
       diamondCost: 0
     - text: "Bu seni de\u011Fi\u015Ftirmiyor."
       nextNodeId: node_011
       effect:
-        affection: 10
+        affection: 6
         setFlag: 
       isDiamond: 0
       diamondCost: 0
     - text: "Anl\u0131yorum neden s\xF6ylemek istemediydin."
       nextNodeId: node_012
       effect:
-        affection: 15
+        affection: 12
         setFlag: 
       isDiamond: 1
       diamondCost: 10
@@ -227,21 +227,21 @@ MonoBehaviour:
     - text: Bu kabul edilemez.
       nextNodeId: node_018
       effect:
-        affection: 7
-        setFlag: 
+        affection: 3
+        setFlag: recklessPath
       isDiamond: 0
       diamondCost: 0
     - text: "Ne zaman ba\u015Flad\u0131 bu?"
       nextNodeId: node_019
       effect:
-        affection: 5
+        affection: 2
         setFlag: 
       isDiamond: 0
       diamondCost: 0
     - text: "Art\u0131k seni takip edemeyecek. Ben buraday\u0131m."
       nextNodeId: node_020
       effect:
-        affection: 18
+        affection: 14
         setFlag: secretDiscovered
       isDiamond: 1
       diamondCost: 8
@@ -322,21 +322,21 @@ MonoBehaviour:
     - text: "D\xFCr\xFCst olmak gerekirse... ikisi de."
       nextNodeId: node_026
       effect:
-        affection: 5
+        affection: 2
         setFlag: 
       isDiamond: 0
       diamondCost: 0
     - text: "Seni \xF6nemsiyorum. Hikaye de\u011Fil, sen."
       nextNodeId: node_027
       effect:
-        affection: 12
+        affection: 6
         setFlag: 
       isDiamond: 0
       diamondCost: 0
     - text: "\u0130lk gece bardaki o an \u2014 o andan beri sen."
       nextNodeId: node_028
       effect:
-        affection: 20
+        affection: 15
         setFlag: secretDiscovered
       isDiamond: 1
       diamondCost: 10

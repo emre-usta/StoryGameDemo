@@ -1,0 +1,1342 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bff8340c4a2e124b8caff9676c036e8, type: 3}
+  m_Name: Jennifer_EP06
+  m_EditorClassIdentifier: 
+  episodeId: jennifer_ep06
+  characterId: jennifer
+  episodeIndex: 5
+  nodes:
+  - id: node_001
+    type: 0
+    speaker: 
+    text: "Sabah. Erken \u2014 g\xFCne\u015F hen\xFCz tam \xE7\u0131kmam\u0131\u015F,
+      sahil h\xE2l\xE2 bo\u015F. Uyumad\u0131n ya da az uyudun. Ama \xE7\u0131kt\u0131n.
+      S\xF6z verdin."
+    backgroundId: 
+    nextNodeId: node_002
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_002
+    type: 0
+    speaker: 
+    text: "Sahile indi\u011Finde onu g\xF6r\xFCyorsun \u2014 dalgak\u0131rana oturmu\u015F,
+      dizleri g\xF6\u011Fs\xFCnde, denize bak\u0131yor. Gitmedi."
+    backgroundId: 
+    nextNodeId: node_003
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_003
+    type: 0
+    speaker: 
+    text: ...
+    backgroundId: 
+    nextNodeId: node_005
+    choices: []
+    requiredFlag: trustEstablished
+    altNodeId: node_004
+  - id: node_004
+    type: 0
+    speaker: 
+    text: "Seni hen\xFCz g\xF6rmedi. Bu k\u0131sa an \u2014 onu bilmeden izledi\u011Fin
+      bu birka\xE7 saniye \u2014 tuhaf hissettiriyor. Bir \u015Feyin i\xE7ine giriyorsun,
+      izin almadan."
+    backgroundId: 
+    nextNodeId: node_006
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_005
+    type: 0
+    speaker: 
+    text: "Seni hen\xFCz g\xF6rmedi. Ama bekliyordu \u2014 bunu anl\u0131yorsun.
+      Omuzlar\u0131n\u0131n tuttu\u011Fu \u015Fekilde, ayaklar\u0131n\u0131n sarkmas\u0131nda.
+      Bu bekleme hali sana tan\u0131d\u0131k geliyor art\u0131k."
+    backgroundId: 
+    nextNodeId: node_006
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_006
+    type: 1
+    speaker: Jennifer
+    text: Erkencisin.
+    backgroundId: 
+    nextNodeId: node_007
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_007
+    type: 0
+    speaker: 
+    text: "Seni g\xF6rd\xFC ama d\xF6nmedi. Sesi sakin \u2014 ama bu sabah farkl\u0131
+      bir sakinlik. Yorgun."
+    backgroundId: 
+    nextNodeId: node_008
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_008
+    type: 2
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices:
+    - text: "Gitmemi\u015Fsin."
+      nextNodeId: node_009
+      effect:
+        affection: 3
+        setFlag: 
+      isDiamond: 0
+      diamondCost: 0
+    - text: "Uyudun mu hi\xE7?"
+      nextNodeId: node_010
+      effect:
+        affection: 5
+        setFlag: 
+      isDiamond: 0
+      diamondCost: 0
+    - text: "Burada oldu\u011Funa sevindim."
+      nextNodeId: node_011
+      effect:
+        affection: 10
+        setFlag: 
+      isDiamond: 1
+      diamondCost: 5
+    requiredFlag: 
+    altNodeId: 
+  - id: node_009
+    type: 1
+    speaker: Jenniffer
+    text: "G\xF6r\xFCyorsun."
+    backgroundId: 
+    nextNodeId: node_012
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_010
+    type: 1
+    speaker: Jennifer
+    text: Biraz.
+    backgroundId: 
+    nextNodeId: node_012
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_011
+    type: 1
+    speaker: Jenniffer
+    text: Abartma.
+    backgroundId: 
+    nextNodeId: node_011b
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_011b
+    type: 0
+    speaker: 
+    text: "Abartma diyor. Ama yan\u0131na \xE7ekiyor biraz \u2014 dalgak\u0131randa
+      yer a\xE7\u0131yor. Fark etmiyor mu, yoksa fark ettirmek mi istemiyor?"
+    backgroundId: 
+    nextNodeId: node_012
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_012
+    type: 0
+    speaker: 
+    text: "Yan\u0131na oturuyorsun. Dalgak\u0131ran\u0131n ta\u015Flar\u0131 sert,
+      so\u011Fuk. Deniz bu sabah sakin \u2014 dalgas\u0131z, d\xFCz, kur\u015Funi."
+    backgroundId: 
+    nextNodeId: node_013
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_013
+    type: 0
+    speaker: Jenniffer
+    text: "Sana bir \u015Fey s\xF6ylemem laz\u0131m."
+    backgroundId: 
+    nextNodeId: node_014
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_014
+    type: 0
+    speaker: 
+    text: "Do\u011Frudan ba\u015Fl\u0131yor. Haz\u0131rl\u0131ks\u0131z yakalad\u0131
+      seni \u2014 ama ayn\u0131 zamanda bu an i\xE7in buradas\u0131n. \u0130kisi
+      de biliyor."
+    backgroundId: 
+    nextNodeId: node_015
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_015
+    type: 0
+    speaker: Jenniffer
+    text: "Bu kasabaya gelmeden \xF6nce... bir \u015Fey oldu. Uzun s\xFCredir devam
+      eden bir \u015Fey."
+    backgroundId: 
+    nextNodeId: node_016
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_016
+    type: 0
+    speaker: 
+    text: "Duruyor. Denize bak\u0131yor. C\xFCmlesi yar\u0131m \u2014 ama kas\u0131tl\u0131
+      de\u011Fil. Nereden ba\u015Flayaca\u011F\u0131n\u0131 bilmiyor."
+    backgroundId: 
+    nextNodeId: node_017
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_017
+    type: 2
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices:
+    - text: Dinliyorum.
+      nextNodeId: node_018
+      effect:
+        affection: 4
+        setFlag: 
+      isDiamond: 0
+      diamondCost: 0
+    - text: Acele etmene gerek yok.
+      nextNodeId: node_019
+      effect:
+        affection: 6
+        setFlag: 
+      isDiamond: 0
+      diamondCost: 0
+    - text: "\u0130ki g\xFCnd\xFCr bekliyordum bunu."
+      nextNodeId: node_020
+      effect:
+        affection: 12
+        setFlag: 
+      isDiamond: 1
+      diamondCost: 8
+    requiredFlag: 
+    altNodeId: 
+  - id: node_018
+    type: 1
+    speaker: Jenniffer
+    text: "Biliyorum. Bu y\xFCzden zor."
+    backgroundId: 
+    nextNodeId: node_021
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_019
+    type: 0
+    speaker: Jenniffer
+    text: "Etmeyece\u011Fim zaten."
+    backgroundId: 
+    nextNodeId: node_021
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_020
+    type: 1
+    speaker: Jenniffer
+    text: "Nas\u0131l anlad\u0131n?"
+    backgroundId: 
+    nextNodeId: node_020b
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_020b
+    type: 0
+    speaker: 
+    text: "Cevap vermiyorsun. Bak\u0131yorsun sadece. Jenniffer ba\u015F\u0131n\u0131
+      \xE7eviriyor \u2014 ve bu kez uzun s\xFCre bak\u0131yor. D\xFC\u015F\xFCn\xFCyor."
+    backgroundId: 
+    nextNodeId: node_021
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_021
+    type: 0
+    speaker: 
+    text: "Jenniffer bir \u015Fey \xE7\u0131kar\u0131yor cebinden. K\xFC\xE7\xFCk,
+      beyaz bir kart. Bir isim var \xFCzerinde \u2014 soyad, unvan. Tan\u0131d\u0131k
+      ama tam olarak neden tan\u0131d\u0131k oldu\u011Funu anlayam\u0131yorsun."
+    backgroundId: 
+    nextNodeId: node_022
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_022
+    type: 1
+    speaker: Jenniffer
+    text: "Babam. \u015Eehrin en b\xFCy\xFCk in\u015Faat \u015Firketinin sahibi.
+      Jenniffer Marais \u2014 bu soyad\u0131 duyunca insanlar de\u011Fi\u015Fiyor."
+    backgroundId: 
+    nextNodeId: node_023
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_023
+    type: 0
+    speaker: 
+    text: "Kart\u0131 dalgak\u0131rana koyuyor. Tutmuyor \u2014 r\xFCzgar almas\u0131n
+      diye biraz s\u0131k\u0131\u015Ft\u0131r\u0131yor ama tutmuyor."
+    backgroundId: 
+    nextNodeId: node_024
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_024
+    type: 0
+    speaker: Jenniffer
+    text: "Y\u0131llard\u0131r onun istedi\u011Fi hayat\u0131 ya\u015F\u0131yorum.
+      Gitti\u011Fim okullar, gezdi\u011Fim yerler, tan\u0131\u015Ft\u0131\u011F\u0131m
+      insanlar \u2014 hepsi onun listesinden."
+    backgroundId: 
+    nextNodeId: node_025
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_025
+    type: 1
+    speaker: Jenniffer
+    text: "Bu kasaba listede yoktu. \u0130lk kez kendi se\xE7imim."
+    backgroundId: 
+    nextNodeId: node_026
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_026
+    type: 0
+    speaker: 
+    text: "\u015Eimdi anl\u0131yorsun \u2014 telefondaki numara, gitmek istemesi
+      ama gidememesi, 'bir \u015Feyden ka\xE7\u0131yorum' demesi. Hepsi bununla ba\u011Fl\u0131yd\u0131."
+    backgroundId: 
+    nextNodeId: node_027
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_027
+    type: 0
+    speaker: 
+    text: ...
+    backgroundId: 
+    nextNodeId: node_029
+    choices: []
+    requiredFlag: firstCrack
+    altNodeId: node_028
+  - id: node_028
+    type: 0
+    speaker: 
+    text: "Bir \u015Feyler yerine oturuyor. Par\xE7alar birle\u015Fiyor."
+    backgroundId: 
+    nextNodeId: node_030
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_029
+    type: 0
+    speaker: 
+    text: "D\xFCn gece sahilde 'bir \u015Feyden ka\xE7\u0131yorum' demi\u015Fti \u2014
+      o an g\xF6zlerindeki \u015Feyi \u015Fimdi anl\u0131yorsun. Bu sadece yorgunluk
+      de\u011Fildi. Y\u0131llar\u0131n a\u011F\u0131rl\u0131\u011F\u0131yd\u0131."
+    backgroundId: 
+    nextNodeId: node_030
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_030
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices:
+    - text: "Neden \u015Fimdi anlatt\u0131n?"
+      nextNodeId: node_031
+      effect:
+        affection: 4
+        setFlag: 
+      isDiamond: 0
+      diamondCost: 0
+    - text: "Bu seni de\u011Fi\u015Ftirmiyor. Benim i\xE7in."
+      nextNodeId: node_032
+      effect:
+        affection: 7
+        setFlag: 
+      isDiamond: 0
+      diamondCost: 0
+    - text: Sen bu listede ne istiyorsun? Kendi listende.
+      nextNodeId: node_033
+      effect:
+        affection: 14
+        setFlag: secretDiscovered
+      isDiamond: 1
+      diamondCost: 10
+    requiredFlag: 
+    altNodeId: 
+  - id: node_031
+    type: 1
+    speaker: Jenniffer
+    text: "\xC7\xFCnk\xFC yar\u0131n gitmeyi d\xFC\u015F\xFCn\xFCyordum. Ve gitmeden
+      \xF6nce birinin bilmesini istedim."
+    backgroundId: 
+    nextNodeId: node_034
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_032
+    type: 1
+    speaker: Jenniffer
+    text: "Bunu s\xF6yleyen \xE7ok az insan var. Ve hi\xE7birini inanmad\u0131m."
+    backgroundId: 
+    nextNodeId: node_034
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_033
+    type: 0
+    speaker: Jenniffer
+    text: ...
+    backgroundId: 
+    nextNodeId: node_033b
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_033b
+    type: 0
+    speaker: 
+    text: "Uzun bir sessizlik. R\xFCzgar geliyor, kart u\xE7uyor \u2014 Jenniffer
+      tutmuyor. Denize bak\u0131yor. Sonra a\u011F\u0131r a\u011F\u0131r, sanki ilk
+      kez kendine soruyor bu soruyu:"
+    backgroundId: 
+    nextNodeId: node_033c
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_033c
+    type: 0
+    speaker: Jenniffer
+    text: "Bilmiyorum. Hi\xE7 d\xFC\u015F\xFCnmemi\u015Ftim."
+    backgroundId: 
+    nextNodeId: node_034
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_034
+    type: 0
+    speaker: 
+    text: "G\xFCne\u015F tam \xE7\u0131k\u0131yor \u2014 sabah\u0131n ilk ger\xE7ek
+      \u0131\u015F\u0131\u011F\u0131. Sahil yava\u015F\xE7a renk kazan\u0131yor.
+      Jenniffer g\xF6zlerini k\u0131s\u0131yor, g\xFCne\u015Fe kar\u015F\u0131."
+    backgroundId: 
+    nextNodeId: node_035
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_035
+    type: 0
+    speaker: Jenniffer
+    text: "Babam bu hafta sonu burada olacak. Beni bulmak i\xE7in gelmiyor \u2014
+      i\u015F toplant\u0131s\u0131. Ama bulacak."
+    backgroundId: 
+    nextNodeId: node_036
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_036
+    type: 0
+    speaker: Jenniffer
+    text: Her zaman buluyor.
+    backgroundId: 
+    nextNodeId: node_037
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_037
+    type: 2
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices:
+    - text: "O gelene kadar ne yapacaks\u0131n?"
+      nextNodeId: node_038
+      effect:
+        affection: 3
+        setFlag: 
+      isDiamond: 0
+      diamondCost: 0
+    - text: "Gitmek zorunda de\u011Filsin."
+      nextNodeId: node_039
+      effect:
+        affection: 6
+        setFlag: 
+      isDiamond: 0
+      diamondCost: 0
+    - text: Seninle kalabilirim. Bu hafta sonu.
+      nextNodeId: node_040
+      effect:
+        affection: 13
+        setFlag: recklessPath
+      isDiamond: 1
+      diamondCost: 10
+    requiredFlag: 
+    altNodeId: 
+  - id: node_038
+    type: 0
+    speaker: Jenniffer
+    text: "Bekleyece\u011Fim. Ne yapaca\u011F\u0131m\u0131 d\xFC\u015F\xFCnece\u011Fim."
+    backgroundId: 
+    nextNodeId: node_041
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_039
+    type: 1
+    speaker: Jenniffer
+    text: Gitmezsem ne olur biliyor musun?
+    backgroundId: 
+    nextNodeId: node_041
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_040
+    type: 1
+    speaker: Jenniffer
+    text: "Sen ne diyorsun bunlar\u0131?"
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_040b
+    type: 0
+    speaker: 
+    text: "K\u0131zg\u0131n de\u011Fil. Ama savunmas\u0131z \u2014 ve bunu kabul
+      etmiyor. G\xF6zlerinde hem 'git' hem 'kalma' var ayn\u0131 anda."
+    backgroundId: 
+    nextNodeId: node_041
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_041
+    type: 0
+    speaker: 
+    text: "Dalgak\u0131randan iniyor. Sahilde y\xFCr\xFCmeye ba\u015Fl\u0131yor \u2014
+      kasabaya do\u011Fru de\u011Fil, ters y\xF6ne. Seni bekliyor mu, umursam\u0131yor
+      mu \u2014 ikisi de olabilir."
+    backgroundId: 
+    nextNodeId: node_042
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_042
+    type: 0
+    speaker: 
+    text: "Onu takip ediyorsun. Y\xFCr\xFCyorsunuz \u2014 sahil boyunca, kasaban\u0131n
+      d\u0131\u015F\u0131na do\u011Fru. Konu\u015Fmadan. Bu sessizlik art\u0131k
+      \xFC\xE7\xFCnc\xFC kez \u2014 ama bu sefer a\u011F\u0131r."
+    backgroundId: 
+    nextNodeId: node_043
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_043
+    type: 0
+    speaker: 
+    text: ...
+    backgroundId: 
+    nextNodeId: node_045
+    choices: []
+    requiredFlag: sharedSilence
+    altNodeId: node_044
+  - id: node_044
+    type: 0
+    speaker: 
+    text: "Jenniffer duruyor. Ayakkab\u0131s\u0131ndaki kumu silkiyor \u2014 gereksiz
+      bir hareket. Elleri bir yerde olsun istiyor."
+    backgroundId: 
+    nextNodeId: node_046
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_045
+    type: 0
+    speaker: 
+    text: "Bu sessizli\u011Fi daha \xF6nce de payla\u015Ft\u0131n\u0131z \u2014 kayay\u0131,
+      sahili, geceyi. Ama bu sabahki farkl\u0131. \u0130\xE7inde bir \u015Fey ta\u015F\u0131yor
+      ve bunu biliyorsun. Sessiz kal\u0131yorsun \u2014 \xE7\xFCnk\xFC \u015Fimdi
+      gerekli olan bu."
+    backgroundId: 
+    nextNodeId: node_046
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_046
+    type: 1
+    speaker: Jenniffer
+    text: "On iki g\xFCn buraday\u0131m. Hi\xE7bir \u015Fey \xE7\xF6z\xFClmedi."
+    backgroundId: 
+    nextNodeId: node_047
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_047
+    type: 0
+    speaker: Jenniffer
+    text: "Ama son iki g\xFCn... farkl\u0131yd\u0131."
+    backgroundId: 
+    nextNodeId: node_048
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_048
+    type: 0
+    speaker: 
+    text: "Sana bak\u0131yor. K\u0131sa, h\u0131zl\u0131 \u2014 ama bak\u0131yor."
+    backgroundId: 
+    nextNodeId: node_049
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_049
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices:
+    - text: "Ben de \xF6yle d\xFC\u015F\xFCn\xFCyorum."
+      nextNodeId: node_050
+      effect:
+        affection: 4
+        setFlag: 
+      isDiamond: 0
+      diamondCost: 0
+    - text: "Sen farkl\u0131yd\u0131n. Kasaba de\u011Fil."
+      nextNodeId: node_051
+      effect:
+        affection: 7
+        setFlag: 
+      isDiamond: 0
+      diamondCost: 0
+    - text: "Seninle ge\xE7en her dakika farkl\u0131yd\u0131. \u0130lk masadan beri."
+      nextNodeId: node_052
+      effect:
+        affection: 15
+        setFlag: secretDiscovered
+      isDiamond: 1
+      diamondCost: 12
+    requiredFlag: 
+    altNodeId: 
+  - id: node_050
+    type: 1
+    speaker: Jenniffer
+    text: Neden?
+    backgroundId: 
+    nextNodeId: node_053
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_051
+    type: 0
+    speaker: Jenniffer
+    text: "Bu \xE7ok... do\u011Frudan bir \u015Fey."
+    backgroundId: 
+    nextNodeId: node_053
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_052
+    type: 1
+    speaker: Jenniffer
+    text: "\u0130lk masadan m\u0131."
+    backgroundId: 
+    nextNodeId: node_052b
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_052b
+    type: 0
+    speaker: 
+    text: "Tekrar ediyor. Soru olarak de\u011Fil \u2014 kafas\u0131nda yerle\u015Ftiriyor.
+      Sonra g\xFCl\xFCyor. K\xFC\xE7\xFCk, beklenmedik, ger\xE7ek bir g\xFCl\xFC\u015F."
+    backgroundId: 
+    nextNodeId: node_052c
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_052c
+    type: 0
+    speaker: Jenniffer
+    text: "O masay\u0131 i\u015Fgal etmi\u015Ftin."
+    backgroundId: 
+    nextNodeId: node_053
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_053
+    type: 0
+    speaker: 
+    text: "Kasaban\u0131n d\u0131\u015F\u0131ndaki yola \xE7\u0131k\u0131yorsunuz.
+      Sa\u011Fda deniz, solda \xE7am a\u011Fa\xE7lar\u0131. Kimse yok burada \u2014
+      sadece siz ve r\xFCzgar."
+    backgroundId: 
+    nextNodeId: node_054
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_054
+    type: 1
+    speaker: Jenniffer
+    text: "Babam gelince ne yapaca\u011F\u0131m\u0131 bilmiyorum."
+    backgroundId: 
+    nextNodeId: node_055
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_055
+    type: 1
+    speaker: Jenniffer
+    text: "Her zaman biliyorum. Her \u015Feyi planl\u0131yorum. Ama \u015Fu an \u2014
+      bilmiyorum."
+    backgroundId: 
+    nextNodeId: node_056
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_056
+    type: 0
+    speaker: 
+    text: "Bu c\xFCmle ondan \xE7ok \u015Fey al\u0131yor. Sessiz kal\u0131yorsun
+      bir s\xFCre."
+    backgroundId: 
+    nextNodeId: node_057
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_057
+    type: 2
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices:
+    - text: Bilmemek de bir cevap bazen.
+      nextNodeId: node_058
+      effect:
+        affection: 5
+        setFlag: 
+      isDiamond: 0
+      diamondCost: 0
+    - text: "Yan\u0131nda olaca\u011F\u0131m. Ne karar verirsen ver."
+      nextNodeId: node_059
+      effect:
+        affection: 8
+        setFlag: trustEstablished
+      isDiamond: 0
+      diamondCost: 0
+    - text: "Bir kez \u2014 sadece bir kez \u2014 kendi i\xE7in karar ver. Ba\u015Fka
+        kimse i\xE7in de\u011Fil."
+      nextNodeId: node_060
+      effect:
+        affection: 14
+        setFlag: secretDiscovered
+      isDiamond: 1
+      diamondCost: 12
+    requiredFlag: 
+    altNodeId: 
+  - id: node_058
+    type: 1
+    speaker: Jenniffer
+    text: "Bence de\u011Fil."
+    backgroundId: 
+    nextNodeId: node_061
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_059
+    type: 1
+    speaker: Jenniffer
+    text: "Sen her \u015Feyi \xE7ok kolay s\xF6yl\xFCyorsun."
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_059b
+    type: 0
+    speaker: 
+    text: "Ele\u015Ftiri gibi ba\u015Fl\u0131yor. Ama sesi k\u0131r\u0131l\u0131yor
+      \u2014 ortada, tam orta noktada."
+    backgroundId: 
+    nextNodeId: node_061
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: node_060
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 
+  - id: 
+    type: 0
+    speaker: 
+    text: 
+    backgroundId: 
+    nextNodeId: 
+    choices: []
+    requiredFlag: 
+    altNodeId: 

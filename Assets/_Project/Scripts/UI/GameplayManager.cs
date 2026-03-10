@@ -49,12 +49,19 @@ namespace StoryGame.UI
         [SerializeField] private Button settingsButton;
         [SerializeField] private Button mainMenuButton;
 
+        [Header("Bölüm Geçiş Ekranı")]
+        [SerializeField] private GameObject episodeTransitionPanel;
+        [SerializeField] private TextMeshProUGUI episodeTitleText;
+        [SerializeField] private TextMeshProUGUI episodeCommentText;
+        [SerializeField] private Button episodeContinueButton;
+
         private bool _blockInput = false;
         private DialogueEngine _dialogueEngine;
         private CharacterState _characterState;
         private IDiamondService _diamondService;
         private string _currentNodeText;
         private string _currentBackgroundId = "";
+        private int _nextEpisodeIndex;
 
         private void Start()
         {
@@ -208,12 +215,15 @@ namespace StoryGame.UI
             var saveService = ServiceLocator.Get<ISaveService>();
             if (saveService != null)
             {
+                // Tüm 7 flag kaydediliyor — yeni eklenenler: firstCrack, sharedSilence
                 var flags = new List<string>();
                 if (_characterState.trustEstablished) flags.Add("trustEstablished");
                 if (_characterState.secretDiscovered) flags.Add("secretDiscovered");
                 if (_characterState.recklessPath) flags.Add("recklessPath");
                 if (_characterState.smoothTalker) flags.Add("smoothTalker");
                 if (_characterState.deepConnection) flags.Add("deepConnection");
+                if (_characterState.firstCrack) flags.Add("firstCrack");
+                if (_characterState.sharedSilence) flags.Add("sharedSilence");
                 saveService.SaveProgress(
                     _characterState.characterId,
                     nodeId,
@@ -327,17 +337,119 @@ namespace StoryGame.UI
         {
             Debug.Log($"[GameplayManager] Bölüm bitti! Ending: {ending}");
             ServiceLocator.Get<IAudioService>()?.PlaySFX("episode_complete");
-            PlayerPrefs.SetString("LastEnding", ending.ToString());
-            PlayerPrefs.SetInt("LastAffection", _characterState.affectionPoints);
 
             string characterId = _characterState.characterId;
             var saveService = ServiceLocator.Get<ISaveService>();
             int currentEpisode = saveService?.GetLastPlayedEpisode(characterId) ?? 0;
-            saveService?.SetLastPlayedEpisode(characterId, currentEpisode + 1);
-            saveService?.DeleteProgress(characterId);
+            int nextEpisode = currentEpisode + 1;
 
-            HideAllPanels();
-            SceneTransition.LoadScene("EndingScreen");
+            // Doğru CharacterData'yı bul
+            CharacterData characterData = null;
+            foreach (var cd in characterDataList)
+            {
+                if (cd.characterId == characterId)
+                {
+                    characterData = cd;
+                    break;
+                }
+            }
+
+            // Son bölüm mü?
+            bool isLastEpisode = characterData == null ||
+                                 characterData.episodes == null ||
+                                 nextEpisode >= characterData.episodes.Length;
+
+            if (isLastEpisode)
+            {
+                // Gerçek oyun sonu
+                saveService?.SetLastPlayedEpisode(characterId, nextEpisode);
+                saveService?.DeleteProgress(characterId);
+                PlayerPrefs.SetString("LastEnding", ending.ToString());
+                PlayerPrefs.SetInt("LastAffection", _characterState.affectionPoints);
+                HideAllPanels();
+                SceneTransition.LoadScene("EndingScreen");
+            }
+            else
+            {
+                // Ara bölüm sonu — sonraki bölümü başlat
+                saveService?.SetLastPlayedEpisode(characterId, nextEpisode);
+                saveService?.DeleteProgress(characterId);
+                PlayerPrefs.SetString("LastEnding", ending.ToString());
+                PlayerPrefs.SetInt("LastAffection", _characterState.affectionPoints);
+                HideAllPanels();
+
+                // Bölüm arası ekran göster
+                ShowEpisodeTransition(nextEpisode, ending);
+            }
+        }
+
+        private void ShowEpisodeTransition(int nextEpisodeIndex, EndingType ending)
+        {
+            _nextEpisodeIndex = nextEpisodeIndex;
+
+            if (episodeTransitionPanel == null)
+            {
+                StartNextEpisode(nextEpisodeIndex);
+                return;
+            }
+
+            episodeTransitionPanel.SetActive(true);
+
+            if (episodeTitleText != null)
+                episodeTitleText.text = $"Bölüm {nextEpisodeIndex} Tamamlandı";
+
+            if (episodeCommentText != null)
+                episodeCommentText.text = GetEpisodeComment(ending, _characterState.affectionPoints);
+
+            if (episodeContinueButton != null)
+            {
+                episodeContinueButton.onClick.RemoveAllListeners();
+                episodeContinueButton.onClick.AddListener(() => {
+                    episodeTransitionPanel.SetActive(false);
+                    StartNextEpisode(nextEpisodeIndex);
+                });
+            }
+        }
+
+        private string GetEpisodeComment(EndingType ending, int affection)
+        {
+            if (affection >= 60)
+                return "Harika gidiyorsun! Jenniffer seni fark etti. Bir sonraki bölümde her şey değişebilir.";
+            else if (affection >= 40)
+                return "İyi bir başlangıç. Ama Jenniffer hâlâ mesafeli. Daha fazlasını yapabilirsin.";
+            else if (affection >= 20)
+                return "Aranızda bir şey var ama henüz yeterli değil. Bir sonraki şansını iyi kullan.";
+            else
+                return "Jenniffer ikna olmadı. Ama her şey bitmedi — devam et ve tekrar dene.";
+        }
+
+        private void StartNextEpisode(int episodeIndex)
+        {
+            string characterId = _characterState.characterId;
+
+            CharacterData characterData = null;
+            foreach (var cd in characterDataList)
+            {
+                if (cd.characterId == characterId)
+                {
+                    characterData = cd;
+                    break;
+                }
+            }
+
+            if (characterData == null || characterData.episodes == null ||
+                episodeIndex >= characterData.episodes.Length)
+            {
+                Debug.LogWarning("[GameplayManager] Sonraki bölüm bulunamadı.");
+                return;
+            }
+
+            var nextDialogueData = characterData.episodes[episodeIndex];
+
+            // CharacterState affection'ı koru ama süresi dolan flagleri temizle
+            _characterState.ExpireFlags(episodeIndex);
+
+            _dialogueEngine.StartEpisode(nextDialogueData, _characterState);
         }
 
         private void HideAllPanels()
